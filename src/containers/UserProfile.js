@@ -15,7 +15,6 @@ export default class UserProfile extends React.Component {
     componentDidMount() {
         // this.setState({userId: this.props.params.match.userId})
     }
-
     setParams(params) {
         this.setState({userId: params.userId})
     }
@@ -24,8 +23,18 @@ export default class UserProfile extends React.Component {
         return (
             <div>
                 <h1>User Profile</h1>
+                <h4>SOME USER INFO</h4>
+                <h4>SOME USER INFO</h4>
+                <h4>SOME USER INFO</h4>
+                <h4>SOME USER INFO</h4>
+                <h4>SOME USER INFO</h4>
+                <h4>SOME USER INFO</h4>
+
+
+                <br/>
+
                 <GroupList userId={this.state.userId} userRole="admin"/>
-                {/*<GroupList userId={this.state.userId} userRole="member"/>*/}
+                <GroupList userId={this.state.userId} userRole="member"/>
             </div>
         )
     }

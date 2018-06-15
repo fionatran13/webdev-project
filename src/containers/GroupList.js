@@ -19,6 +19,7 @@ export default class GroupList extends React.Component {
     }
 
     componentDidMount() {
+        alert('hard coded lists fetch for admin')
         this.setParams(this.props)
         this.fetchList()
     }
@@ -34,7 +35,7 @@ export default class GroupList extends React.Component {
         if (this.state.userId != '' && this.state.userRole != '') {
             list = this.state.list.map(
                 function (item) {
-                    return <GroupRow key={item.id}
+                    return <GroupRow key={item.id + item.name}
                                      info={item}
                                      delete={self.deleteGroup}
                                      userRole={self.state.userRole}
@@ -57,7 +58,7 @@ export default class GroupList extends React.Component {
                 </div>
                 <table className="table">
                     <thead>
-                    <tr>
+                    <tr hidden={this.state.userRole != 'admin'}>
                         <th><input onChange={this.titleChanged}
                                    className="form-control" id="titleFld"
                                    placeholder="Create a group"/></th>
@@ -78,11 +79,13 @@ export default class GroupList extends React.Component {
     }
 
     fetchList() {
-        this.groupService
-            .findAllGroupsByUID(this.state.userRole, this.state.userId)
-            .then((list) => {
-                this.setState({list: list});
-            })
+        if (this.state.userId != '' && this.state.userRole != '') {
+            this.groupService
+                .findAllGroupsByUID(this.state.userRole, this.state.userId)
+                .then((list) => {
+                    this.setState({list: list});
+                })
+        }
     }
 
     titleChanged(event) {

@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30b68169-b46d-4516-88f1-6fc64ffe476f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/component/GroupRow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/component/SearchBar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/GroupList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/UserProfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/GroupService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/registerServiceWorker.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/component/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/GroupList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/GroupList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/UserProfile.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserProfile.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserProfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/UserProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="540">
+              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -56,13 +45,18 @@
       <file leaf-file-name="GroupList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/GroupList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="361">
+              <caret line="69" column="29" lean-forward="true" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchBar.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/component/SearchBar.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="GroupRow.js" pinned="false" current-in-tab="false">
@@ -119,8 +113,9 @@
         <option value="$PROJECT_DIR$/src/component/GroupRow.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/services/GroupService.js" />
-        <option value="$PROJECT_DIR$/src/containers/GroupList.js" />
         <option value="$PROJECT_DIR$/src/containers/UserProfile.js" />
+        <option value="$PROJECT_DIR$/src/containers/GroupList.js" />
+        <option value="$PROJECT_DIR$/src/component/SearchBar.js" />
       </list>
     </option>
   </component>
@@ -217,12 +212,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529084982029</updated>
-      <workItem from="1529084983871" duration="4107000" />
+      <workItem from="1529084983871" duration="4451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4107000" />
+    <option name="totallyTimeSpent" value="4451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="380" y="23" width="1057" height="812" extended-state="0" />
@@ -275,16 +270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/GroupList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -297,13 +282,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/UserProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="540">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/GroupList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="69" column="29" lean-forward="true" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/SearchBar.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
