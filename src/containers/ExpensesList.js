@@ -50,12 +50,7 @@ export default class ExpensesList extends React.Component {
     }
 
     addExpense() {
-        // this.state.expenses.push(this.state.expenses.note);
-        // this.groupService
-        //     .updateExpenses(this.state.groupId, this.state.expenses)
-        //     .then(() => {
-        //         this.findAllExpensesForGroup(this.state.groupId);
-        //     });
+        //TODO: create Expense form
     }
 
     deleteExpense() {
@@ -78,13 +73,14 @@ export default class ExpensesList extends React.Component {
     render() {
         return (
             <div>
-                <h1>Expenses</h1>
+                <h2>Expenses</h2>
                 <ul className="list-group">
                     {this.renderExpenses()}
                 </ul>
                     <button id="addBtn"
                             type="button"
-                            className="btn">
+                            className="btn"
+                            onClick={this.addExpense}>
                         Add new expense
                     </button>
             </div>

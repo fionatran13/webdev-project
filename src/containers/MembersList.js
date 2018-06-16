@@ -48,12 +48,13 @@ export default class MembersList extends React.Component {
     }
 
     addMember() {
-        this.state.members.push(this.state.member.username);
-        this.groupService
-            .updateMembers(this.state.groupId, this.state.members)
-            .then(() => {
-                this.findAllMembersForGroup(this.state.groupId);
-            });
+        //TODO: implement search for user
+        // this.state.members.push(this.state.member.username);
+        // this.groupService
+        //     .updateMembers(this.state.groupId, this.state.members)
+        //     .then(() => {
+        //         this.findAllMembersForGroup(this.state.groupId);
+        //     });
     }
 
     deleteMember(username) {
@@ -82,7 +83,7 @@ export default class MembersList extends React.Component {
     render() {
         return (
             <div>
-                <h1>Members</h1>
+                <h2>Members</h2>
                 <ul className="list-group">
                     {this.renderMembers()}
                 </ul>
