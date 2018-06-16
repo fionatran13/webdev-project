@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="30b68169-b46d-4516-88f1-6fc64ffe476f" name="Default" comment="" />
+=======
+    <list default="true" id="ce18d74d-7e97-4768-8a4e-c31caa4862f2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/containers/PaymentDueList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentDue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ExpensesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ExpensesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/GroupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/GroupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/MembersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MembersList.js" afterDir="false" />
+    </list>
+>>>>>>> GroupViewComponent
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,11 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
               <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+=======
+      <file leaf-file-name="ExpensesList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/ExpensesList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+>>>>>>> GroupViewComponent
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -26,6 +45,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="UserProfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/UserProfile.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -34,15 +54,30 @@
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="PaymentDueList.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/PaymentDueList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+>>>>>>> GroupViewComponent
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="GroupList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/GroupList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+=======
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+>>>>>>> GroupViewComponent
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -50,6 +85,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="SearchBar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/SearchBar.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -57,11 +93,21 @@
               <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+=======
+      <file leaf-file-name="GroupPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/GroupPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+>>>>>>> GroupViewComponent
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor" />
@@ -72,6 +118,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="547">
               <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+=======
+      <file leaf-file-name="MembersList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/MembersList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+>>>>>>> GroupViewComponent
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -79,11 +132,28 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="GroupService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/GroupService.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="508">
               <caret line="56" column="34" lean-forward="true" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+=======
+      <file leaf-file-name="ExpenseService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/ExpenseService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/GroupService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+>>>>>>> GroupViewComponent
             </state>
           </provider>
         </entry>
@@ -93,11 +163,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="CSS File" />
+=======
+>>>>>>> GroupViewComponent
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="FindInProjectRecents">
     <findStrings>
       <find>createGroup</find>
@@ -106,12 +180,15 @@
       <find>findAl</find>
     </findStrings>
   </component>
+=======
+>>>>>>> GroupViewComponent
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/component/SearchBar.css" />
         <option value="$PROJECT_DIR$/src/services/GroupService.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
@@ -119,6 +196,21 @@
         <option value="$PROJECT_DIR$/src/containers/UserProfile.js" />
         <option value="$PROJECT_DIR$/src/containers/GroupList.js" />
         <option value="$PROJECT_DIR$/src/component/GroupRow.js" />
+=======
+        <option value="$PROJECT_DIR$/src/components/ExpensesList.js" />
+        <option value="$PROJECT_DIR$/src/services/PaymentService.js" />
+        <option value="$PROJECT_DIR$/src/components/MembersList.js" />
+        <option value="$PROJECT_DIR$/src/components/MembersListItem.js" />
+        <option value="$PROJECT_DIR$/src/services/GroupService.js" />
+        <option value="$PROJECT_DIR$/src/components/ExpensesListItem.js" />
+        <option value="$PROJECT_DIR$/src/services/ExpenseService.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/MembersList.js" />
+        <option value="$PROJECT_DIR$/src/containers/ExpensesList.js" />
+        <option value="$PROJECT_DIR$/src/components/PaymentDue.js" />
+        <option value="$PROJECT_DIR$/src/containers/GroupPage.js" />
+        <option value="$PROJECT_DIR$/src/containers/PaymentDueList.js" />
+>>>>>>> GroupViewComponent
       </list>
     </option>
   </component>
@@ -138,22 +230,33 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="380" />
     <option name="y" value="23" />
     <option name="width" value="1057" />
     <option name="height" value="812" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="686" />
+    <option name="width" value="754" />
+    <option name="height" value="900" />
+>>>>>>> GroupViewComponent
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> GroupViewComponent
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
               <item name="split-the-bill" type="b2602c69:ProjectViewProjectNode" />
               <item name="split-the-bill" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -171,12 +274,41 @@
             <path>
               <item name="split-the-bill" type="b2602c69:ProjectViewProjectNode" />
               <item name="split-the-bill" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="webdev-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webdev-project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webdev-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webdev-project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webdev-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webdev-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webdev-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webdev-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webdev-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webdev-project" type="462c0819:PsiDirectoryNode" />
+>>>>>>> GroupViewComponent
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
+<<<<<<< HEAD
               <item name="split-the-bill" type="b2602c69:ProjectViewProjectNode" />
               <item name="split-the-bill" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="webdev-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webdev-project" type="462c0819:PsiDirectoryNode" />
+>>>>>>> GroupViewComponent
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -184,14 +316,29 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> GroupViewComponent
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+=======
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/containers" />
+    </key>
+>>>>>>> GroupViewComponent
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -210,16 +357,26 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="30b68169-b46d-4516-88f1-6fc64ffe476f" name="Default" comment="" />
       <created>1529084982029</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529084982029</updated>
       <workItem from="1529084983871" duration="9834000" />
+=======
+      <changelist id="ce18d74d-7e97-4768-8a4e-c31caa4862f2" name="Default" comment="" />
+      <created>1529085699263</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529085699263</updated>
+      <workItem from="1529085700868" duration="13978000" />
+>>>>>>> GroupViewComponent
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="9834000" />
   </component>
   <component name="ToolWindowManager">
@@ -244,6 +401,32 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+=======
+    <option name="totallyTimeSpent" value="13978000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="686" y="0" width="754" height="900" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.27586207" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32968536" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32968536" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+>>>>>>> GroupViewComponent
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +436,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/component/SearchBar.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -266,29 +450,79 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/src/services/PaymentService.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/GroupService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MembersListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ExpensesListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="21" selection-start-line="9" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/ExpenseService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+>>>>>>> GroupViewComponent
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="180">
           <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+=======
+        <state relative-caret-position="120">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+>>>>>>> GroupViewComponent
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/component/GroupRow.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
           <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/containers/MembersList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+>>>>>>> GroupViewComponent
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/services/GroupService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
@@ -302,10 +536,29 @@
           <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/containers/ExpensesList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/GroupPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+>>>>>>> GroupViewComponent
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/containers/GroupList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -313,6 +566,12 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/src/containers/PaymentDueList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+>>>>>>> GroupViewComponent
         </state>
       </provider>
     </entry>

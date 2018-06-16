@@ -57,6 +57,25 @@ class GroupService {
         return fetch(GROUP_API_URL + '/' + id, {
             method: 'DELETE'
         })
+
+
+    findAllMembersForGroup(groupId) {
+        return fetch('http:localhost:8080/api/group/' + groupId + '/members')
+            .then(function(response) {
+                return response.json();
+            })
     }
 
+    updateMembers(groupId, members) {
+        return fetch('http:localhost:8080/api/group/' + groupId + '/members',
+            {
+                body:JSON.stringify(members),
+                headers: {'Content-Type': 'application/json'},
+                method: 'PUT'
+            })
+            .then(function(response) {
+                return response.json();
+            })
+    }
 }
+    }

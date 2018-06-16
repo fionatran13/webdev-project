@@ -3,8 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import UserProfile from "./containers/UserProfile";
-import SearchBar from "./component/SearchBar";
+import GroupPage from './containers/GroupPage';
 
 ReactDOM.render(
     <Router>
@@ -16,3 +15,8 @@ ReactDOM.render(
     </Router>,
     document.getElementById('root')
 );
+ReactDOM.render(
+    <div className="container-fluid">
+        <GroupPage/>
+    </div>,
+        document.getElementById('root'));
