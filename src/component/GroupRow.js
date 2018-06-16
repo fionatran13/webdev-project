@@ -5,7 +5,7 @@ export default class GroupRow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id:'',
+            id:'2',
             userRole: ''
         }
     }
@@ -33,7 +33,7 @@ export default class GroupRow extends React.Component {
                 <td>
                     <span className="float-right">
                         <button onClick={() =>
-                        {this.props.delete(this.props.info.id)}}
+                        {this.props.delete(this.props.info.id, this.props.userRole)}}
                                 className="btn btn-outline-dark">
                         <i className="fa fa-remove"></i>
                         </button>

@@ -6,18 +6,14 @@ export default class UserProfile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userId: '2',
+            userId: '',
             groupListAsAdmin: [],
             groupListAsMember: []
         }
-        this.setParams = this.setParams.bind(this)
     }
 
     componentDidMount() {
-        // this.setState({userId: this.props.params.match.userId})
-    }
-    setParams(params) {
-        this.setState({userId: params.userId})
+        this.setState({userId: this.props.match.params.userId});
     }
 
     render() {
@@ -28,8 +24,8 @@ export default class UserProfile extends React.Component {
                 <SearchBar id={this.state.userId}/>
                 <br/>
 
-                <GroupList userId={this.state.userId} userRole="admin"/>
-                <GroupList userId={this.state.userId} userRole="member"/>
+                <GroupList userId={this.props.match.params.userId} userRole="admin"/>
+                <GroupList userId={this.props.match.params.userId} userRole="member"/>
             </div>
         )
     }

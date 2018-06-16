@@ -9,7 +9,9 @@ import SearchBar from "./component/SearchBar";
 ReactDOM.render(
     <Router>
         <div>
-            <UserProfile/>
+            <Route path="/user/:userId"
+                   component={UserProfile}>
+            </Route>
         </div>
     </Router>,
     document.getElementById('root')

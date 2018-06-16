@@ -8,9 +8,9 @@ export default class GroupList extends React.Component {
         this.groupService = GroupService.instance;
         this.state = {
             userRole: 'admin',
-            userId: '',
+            userId: '2',
             newGroup: {name: ''},
-            list: [{name: 'group 1'}]
+            list: []
         };
         this.titleChanged = this.titleChanged.bind(this);
         this.deleteGroup = this.deleteGroup.bind(this);
@@ -19,7 +19,6 @@ export default class GroupList extends React.Component {
     }
 
     componentDidMount() {
-        alert('hard coded lists fetch for admin')
         this.setParams(this.props)
         this.fetchList()
     }
@@ -53,7 +52,7 @@ export default class GroupList extends React.Component {
             <div>
                 <div className="container">
                     <h2 className="text-center text-uppercase text-secondary mb-0">
-                        Groups you are as {this.state.userRole}
+                        Groups you are in as {this.state.userRole}
                     </h2>
                 </div>
                 <table className="table">
@@ -81,7 +80,7 @@ export default class GroupList extends React.Component {
     fetchList() {
         if (this.state.userId != '' && this.state.userRole != '') {
             this.groupService
-                .findAllGroupsByUserRole(this.state.userRole, this.state.userId)
+                .findAllGroupsByUserRole(this.props.userRole, this.state.userId)
                 .then((list) => {
                     this.setState({list: list});
                 })
@@ -107,7 +106,8 @@ export default class GroupList extends React.Component {
     }
 
     deleteGroup(id, userRole) {
-        if(userRole === 'admin') {
+        console.log(userRole)
+        if(userRole == 'admin') {
             this.groupService
                 .deleteGroup(id)
                 .then(() => {

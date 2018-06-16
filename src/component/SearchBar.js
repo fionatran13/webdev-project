@@ -8,7 +8,7 @@ export default class SearchBar extends React.Component {
         super(props)
         this.groupService = GroupService.instance;
         this.state = {
-            id:'',
+            id:'2',
             searchGroupName: '',
             list: [],
             query: []
@@ -17,13 +17,11 @@ export default class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        // this.setState({id: this.props.id})
         this.setParams(this.props.id)
         this.fetchList()
     }
 
     setParams(id) {
-        console.log(id)
         this.setState({id: id})
     }
 
@@ -35,7 +33,6 @@ export default class SearchBar extends React.Component {
     }
 
     fetchList() {
-        console.log(this.state)
         if (this.state.id != '') {
             this.groupService
                 .findAllGroupsForUser(this.state.id)
@@ -81,6 +78,11 @@ export default class SearchBar extends React.Component {
             <table className="table">
                 <thead>
                 <tr>
+                    <th>
+                        <button className="btn">
+                            <i className="fa fa-search"></i>
+                        </button>
+                    </th>
                     <th><input onChange={this.titleChanged}
                                className="form-control" id="titleFld"
                                placeholder="Find by group name"/></th>
