@@ -3,7 +3,7 @@ import MembersList from './MembersList';
 import ExpensesList from './ExpensesList';
 
 
-export default class GroupPage extends Component {
+export default class GroupPage extends React.Component {
     render() {
         return (
             <div>

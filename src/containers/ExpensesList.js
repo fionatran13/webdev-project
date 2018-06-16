@@ -1,6 +1,7 @@
 import React from 'react';
 import GroupService from "../services/GroupService";
 import ExpenseService from "../services/ExpenseService";
+import ExpensesListItem from "../components/ExpensesListItem";
 
 
 export default class ExpensesList extends React.Component {
@@ -63,5 +64,30 @@ export default class ExpensesList extends React.Component {
             .then(() => {
                 this.findAllMembersForGroup(this.state.groupId)
             });
+    }
+
+    renderExpenses() {
+        let items = this.state.expenses.map((expense) => {
+            return <ExpensesListItem groupId={this.state.groupId}
+                                    note={expense.note}
+                                    delete={this.deleteExpense}/>
+        })
+        return items;
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Expenses</h1>
+                <ul className="list-group">
+                    {this.renderExpenses()}
+                </ul>
+                    <button id="addBtn"
+                            type="button"
+                            className="btn">
+                        Add new expense
+                    </button>
+            </div>
+        )
     }
 }
