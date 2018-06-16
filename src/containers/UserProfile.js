@@ -1,5 +1,6 @@
 import React from 'react'
 import GroupList from "./GroupList";
+import SearchBar from "../component/SearchBar";
 
 export default class UserProfile extends React.Component {
     constructor(props) {
@@ -23,14 +24,8 @@ export default class UserProfile extends React.Component {
         return (
             <div>
                 <h1>User Profile</h1>
-                <h4>SOME USER INFO</h4>
-                <h4>SOME USER INFO</h4>
-                <h4>SOME USER INFO</h4>
-                <h4>SOME USER INFO</h4>
-                <h4>SOME USER INFO</h4>
-                <h4>SOME USER INFO</h4>
-
-
+                <br/>
+                <SearchBar id={this.state.userId}/>
                 <br/>
 
                 <GroupList userId={this.state.userId} userRole="admin"/>

@@ -81,7 +81,7 @@ export default class GroupList extends React.Component {
     fetchList() {
         if (this.state.userId != '' && this.state.userRole != '') {
             this.groupService
-                .findAllGroupsByUID(this.state.userRole, this.state.userId)
+                .findAllGroupsByUserRole(this.state.userRole, this.state.userId)
                 .then((list) => {
                     this.setState({list: list});
                 })

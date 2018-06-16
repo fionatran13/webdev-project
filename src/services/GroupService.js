@@ -19,7 +19,15 @@ class GroupService {
         return this[_singleton]
     }
 
-    findAllGroupsByUID(userRole, uid) {
+
+    findAllGroupsForUser(uid) {
+        return fetch(GROUP_USER_URL.replace('UID', uid))
+            .then(function(response){
+                return response.json();
+            });
+    }
+
+    findAllGroupsByUserRole(userRole, uid) {
         return fetch(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
             .then(function(response){
                 return response.json();
