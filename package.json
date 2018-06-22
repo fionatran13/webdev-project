@@ -5,10 +5,11 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
+    "fontawesome": "^4.7.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-facebook-login": "^4.0.1",
     "react-router-dom": "^4.3.1",
-    "fontawesome": "^4.7.2",
     "react-scripts": "1.1.4"
   },
   "scripts": {
