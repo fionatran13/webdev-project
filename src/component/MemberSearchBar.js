@@ -18,13 +18,11 @@ export default class MemberSearchBar extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
-        this.setParams(this.props.match.params.uid)
-        this.fetchList()
+        this.setParams(this.props)
     }
 
-    setParams(id) {
-        this.setState({id: id})
+    setParams(props) {
+        this.setState({id: props.uid, list: props.friends})
     }
 
     titleChanged(event) {
@@ -34,11 +32,6 @@ export default class MemberSearchBar extends React.Component {
         this.filterList(event.target.value)
     }
 
-    fetchList() {
-        console.log(this.state)
-        if (this.state.id != '') {
-        }
-    }
 
     filterList(input) {
         if(input == '') {
@@ -83,7 +76,7 @@ export default class MemberSearchBar extends React.Component {
                     </th>
                     <th><input onChange={this.titleChanged}
                                className="form-control" id="titleFld"
-                               placeholder="Find by group name"/></th>
+                               placeholder="Find registered users by email"/></th>
                 </tr>
                 </thead>
                 <tbody>

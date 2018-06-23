@@ -73,7 +73,8 @@ export default class App extends React.Component {
                 <div>
                     <div className="container-fluid">
                         <Route path="/user/:uid"
-                               component={MemberSearchBar}>
+                               render={() => <MemberSearchBar user={"2713186265573577"}
+                                                              friends={[{name: "Fiona", id: "1870318346364001"}]}/>}>
                         </Route>
                     </div>
                     <div hidden={this.state.loggedIn}>
