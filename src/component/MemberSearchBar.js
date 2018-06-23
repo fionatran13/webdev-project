@@ -40,7 +40,9 @@ export default class MemberSearchBar extends React.Component {
     fetchList() {
         this.service
             .findAllRegisteredUsers()
-            .then(response => console.log(response))
+            .then((list) => {
+                this.setState({list: list});
+            })
     }
 
     filterList(input) {
@@ -48,9 +50,8 @@ export default class MemberSearchBar extends React.Component {
             this.setState({query: []})
         } else {
             var filteredList = this.state.list.filter(item => (
-                item.name.includes(input)
+                item.username.includes(input)
             ))
-            console.log(filteredList)
             this.setState({query: filteredList})
         }
     }
@@ -64,7 +65,7 @@ export default class MemberSearchBar extends React.Component {
             if (this.state.id != '') {
                 list = this.state.query.map(
                     function (item) {
-                        return <tr key={item.id}>{item.name}</tr>
+                        return <tr key={item.id}>{item.username}</tr>
                     }
                 )
             }
