@@ -25,7 +25,6 @@ export default class App extends React.Component {
     }
 
     responseFacebook(response) {
-        console.log(response)
         this.setState({user: response, friends: response.friends})
         //
         // FB.api(
@@ -73,8 +72,8 @@ export default class App extends React.Component {
                 <div>
                     <div className="container-fluid">
                         <Route path="/user/:uid"
-                               render={() => <MemberSearchBar user={"2713186265573577"}
-                                                              friends={[{name: "Fiona", id: "1870318346364001"}]}/>}>
+                               render={() => <MemberSearchBar user={this.state.user}
+                                                              friends={this.state.friends.data}/>}>
                         </Route>
                     </div>
                     <div hidden={this.state.loggedIn}>

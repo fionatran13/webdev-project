@@ -4,11 +4,13 @@ import GroupService from "../services/GroupService";
 import GroupRow from "./GroupRow";
 import {TAM_ID} from "../index";
 import FacebookService from "../services/FacebookService";
+import FBsugestBar from "./FBsugestBar";
 
 export default class MemberSearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            friends: {},
             id: TAM_ID,
             searchInp: '',
             list: [],
@@ -23,7 +25,7 @@ export default class MemberSearchBar extends React.Component {
     }
 
     setParams(props) {
-        this.setState({id: props.uid, list: props.friends})
+        this.setState({id: props.user.id, friends: props.friends})
     }
 
     titleChanged(event) {
@@ -34,7 +36,6 @@ export default class MemberSearchBar extends React.Component {
     }
 
     fetchList() {
-        console.log(this.state)
         if (this.state.id != '') {
         }
     }
@@ -70,6 +71,12 @@ export default class MemberSearchBar extends React.Component {
         }
     }
 
+    suggestFacebookFriends() {
+        if(Array.isArray(this.state.friends)) {
+            return (<FBsugestBar friends={this.state.friends}/>)
+        }
+    }
+
     render() {
         return (
             <table className="table">
@@ -86,6 +93,9 @@ export default class MemberSearchBar extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    {this.suggestFacebookFriends()}
+                </tr>
                 {this.renderQuery()}
                 </tbody>
             </table>
