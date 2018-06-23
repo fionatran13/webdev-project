@@ -17,12 +17,12 @@ const componentClicked = (event) => {
 
 ReactDOM.render(
     <Router>
-        {/*<FacebookLogin*/}
-            {/*appId="2260374724192830"*/}
-            {/*autoLoad={false}*/}
-            {/*fields="name,email,picture"*/}
-            {/*onClick={componentClicked}*/}
-            {/*callback={responseFacebook} />*/}
+        <FacebookLogin
+            appId="2260374724192830"
+            autoLoad={false}
+            fields="name,email,picture"
+            onClick={componentClicked}
+            callback={responseFacebook} />
 
         {/*<div>*/}
             {/*<Route path="/user/:userId"*/}
