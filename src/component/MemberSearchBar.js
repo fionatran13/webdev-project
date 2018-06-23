@@ -19,7 +19,7 @@ export default class MemberSearchBar extends React.Component {
 
     componentDidMount() {
         console.log(this.props)
-        this.setParams(this.props.id)
+        this.setParams(this.props.match.params.uid)
         this.fetchList()
     }
 
@@ -35,6 +35,7 @@ export default class MemberSearchBar extends React.Component {
     }
 
     fetchList() {
+        console.log(this.state)
         if (this.state.id != '') {
         }
     }

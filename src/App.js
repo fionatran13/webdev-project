@@ -1,6 +1,6 @@
 /* global FB */
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
@@ -17,6 +17,7 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            loggedIn: false,
             user: {},
             friends: []
         }
@@ -38,22 +39,54 @@ export default class App extends React.Component {
     }
 
     handleResponse() {
-        if(this.state.user != {} && this.state.user.id != undefined) {
-            window.location.href = '/user/' + this.state.user.id
+        if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
+            this.setState({loggedIn: true})
+            return <Redirect to={'/user/' + this.state.user.id}/>
         }
     }
 
+    // render() {
+    //     return (
+    //         <Router>
+    //             <div className="container-fluid">
+    //
+    //                 <div>
+    //                     <FacebookLogin
+    //                         appId="2260374724192830"
+    //                         autoLoad={true}
+    //                         fields="name,email,picture,friends"
+    //                         callback={this.responseFacebook}/>
+    //                     {this.handleResponse()}
+    //                 </div>
+    //             </div>
+    //
+    //             <Route path="/user/:uid"
+    //                    component={<MemberSearchBar friends={this.state.friends}/>}>
+    //             </Route>
+    //         </Router>
+    //     )
+    // }
+
     render() {
         return (
-            <div>
-                {/*<MemberSearchBar id={2713186265573577}/>*/}
-                <FacebookLogin
-                    appId="2260374724192830"
-                    autoLoad={true}
-                    fields="name,email,picture,friends"
-                    callback={this.responseFacebook} />
-                {this.handleResponse()}
-            </div>
+            <Router>
+                <div>
+                    <div className="container-fluid">
+                        <Route path="/user/:uid"
+                               component={MemberSearchBar}>
+                        </Route>
+                    </div>
+                    <div hidden={this.state.loggedIn}>
+                        <FacebookLogin
+                            appId="2260374724192830"
+                            autoLoad={true}
+                            fields="name,email,picture,friends"
+                            callback={this.responseFacebook}/>
+                        {this.handleResponse()}
+                    </div>
+                </div>
+
+            </Router>
         )
     }
 }
