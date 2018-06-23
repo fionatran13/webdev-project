@@ -2,14 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import GroupService from "../services/GroupService";
 import GroupRow from "./GroupRow";
+import {TAM_ID} from "../index";
+import FacebookService from "../services/FacebookService";
 
-export default class SearchBar extends React.Component {
+export default class MemberSearchBar extends React.Component {
     constructor(props) {
         super(props)
-        this.groupService = GroupService.instance;
+        this.facebookService = FacebookService.instance;
         this.state = {
-            id:'2',
-            searchGroupName: '',
+            id: TAM_ID,
+            searchInp: '',
             list: [],
             query: []
         }
@@ -34,11 +36,7 @@ export default class SearchBar extends React.Component {
 
     fetchList() {
         if (this.state.id != '') {
-            this.groupService
-                .findAllGroupsForUser(this.state.id)
-                .then((list) => {
-                    this.setState({list: list});
-                })
+            console.log(this.facebookService.getFriends(this.state.id));
         }
     }
 
@@ -55,7 +53,7 @@ export default class SearchBar extends React.Component {
     }
 
     renderQuery() {
-        if(this.state.searchGroupName != '' && this.state.query.length === 0) {
+        if(this.state.searchInp != '' && this.state.query.length === 0) {
             return (<tr>Results not found</tr>)
         }
         else {
