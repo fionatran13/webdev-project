@@ -1,22 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import GroupService from "../services/GroupService";
-import GroupRow from "./GroupRow";
 import {TAM_ID} from "../index";
-import FacebookService from "../services/FacebookService";
 import FBsugestBar from "./FBsugestBar";
 import UserService from "../services/UserService";
+import GroupService from "../services/GroupService";
 
 export default class MemberSearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            gid: '2',
             friends: {},
-            id: TAM_ID,
+            id: '',
+            selectedMId: '2',
             searchInp: '',
             list: [],
             query: []
         }
+        this.groupService = GroupService.instance;
         this.service = UserService.instance;
         this.titleChanged = this.titleChanged.bind(this)
     }
@@ -28,6 +28,17 @@ export default class MemberSearchBar extends React.Component {
 
     setParams(props) {
         this.setState({id: props.user.id, friends: props.friends})
+    }
+
+    selectMember(id) {
+        this.setState({selectedMId: id})
+        console.log(this.state.selectedMId)
+    }
+
+    addMemberToGroup() {
+        alert('adding ' + this.state.selectedMId + ' to group ' + this.state.gid)
+        this.groupService
+            .addMemberByIdToGroup(this.state.gid, this.state.selectedMId)
     }
 
     titleChanged(event) {
@@ -57,6 +68,7 @@ export default class MemberSearchBar extends React.Component {
     }
 
     renderQuery() {
+        let self = this
         if(this.state.searchInp != '' && this.state.query.length === 0) {
             return (<tr>Results not found</tr>)
         }
@@ -65,7 +77,8 @@ export default class MemberSearchBar extends React.Component {
             if (this.state.id != '') {
                 list = this.state.query.map(
                     function (item) {
-                        return <tr key={item.id}>{item.username}</tr>
+                        return (<tr key={item.id} onClick={() => self.selectMember(item.id)}>
+                            {item.username}</tr>)
                     }
                 )
             }
@@ -93,7 +106,14 @@ export default class MemberSearchBar extends React.Component {
                     </th>
                     <th><input onChange={this.titleChanged}
                                className="form-control" id="titleFld"
-                               placeholder="Find by username"/></th>
+                               placeholder="Find by username"/>
+                    </th>
+                    <th>
+                        <button className="btn"
+                                onClick={() => this.addMemberToGroup()}>
+                            <i className="fa fa-plus"></i>
+                        </button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>

@@ -77,4 +77,12 @@ export default class GroupService {
                 return response.json();
             })
     }
+
+    addMemberByIdToGroup(groupId, memberId) {
+        return fetch('http:localhost:8080/api/group/' + groupId + '/newMember/' + memberId,
+            {
+                headers: {'Content-Type': 'application/json'},
+                method: 'POST'
+            })
+    }
 }
