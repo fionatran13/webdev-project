@@ -25,6 +25,7 @@ export default class App extends React.Component {
     }
 
     responseFacebook(response) {
+        console.log(response)
         this.setState({user: response, friends: response.friends})
         //
         // FB.api(
@@ -43,28 +44,6 @@ export default class App extends React.Component {
             return <Redirect to={'/user/' + this.state.user.id}/>
         }
     }
-
-    // render() {
-    //     return (
-    //         <Router>
-    //             <div className="container-fluid">
-    //
-    //                 <div>
-    //                     <FacebookLogin
-    //                         appId="2260374724192830"
-    //                         autoLoad={true}
-    //                         fields="name,email,picture,friends"
-    //                         callback={this.responseFacebook}/>
-    //                     {this.handleResponse()}
-    //                 </div>
-    //             </div>
-    //
-    //             <Route path="/user/:uid"
-    //                    component={<MemberSearchBar friends={this.state.friends}/>}>
-    //             </Route>
-    //         </Router>
-    //     )
-    // }
 
     render() {
         return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import GroupService from "../services/GroupService";
 import GroupRow from "./GroupRow";
 import {TAM_ID} from "../index";
@@ -22,18 +22,15 @@ export default class FBsugestBar extends React.Component {
     }
 
     renderList() {
-        console.log(this.state.list)
-
-            let list = null;
-            list = this.state.list.map(
-                function (item) {
-                    console.log(item)
-                    return <th key={item.id}>{item.name}</th>
-                }
-            )
-            return (
-                list
-            )
+        let list = null;
+        list = this.state.list.map(
+            function (item) {
+                return <th key={item.id}>{item.name}</th>
+            }
+        )
+        return (
+            list
+        )
     }
 
     render() {
@@ -41,6 +38,6 @@ export default class FBsugestBar extends React.Component {
             <div>
                 {this.renderList()}
             </div>
-            )
+        )
     }
 }

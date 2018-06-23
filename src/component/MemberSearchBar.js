@@ -89,7 +89,7 @@ export default class MemberSearchBar extends React.Component {
                     </th>
                     <th><input onChange={this.titleChanged}
                                className="form-control" id="titleFld"
-                               placeholder="Find by group name"/></th>
+                               placeholder="Find registered user by email"/></th>
                 </tr>
                 </thead>
                 <tbody>
