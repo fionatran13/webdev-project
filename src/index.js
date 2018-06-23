@@ -7,6 +7,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import GroupPage from './containers/GroupPage';
 import UserProfile from "./containers/UserProfile";
 import FacebookLogin from 'react-facebook-login';
+import LoginPage from "./containers/LoginPage";
 
 
 export const TAM_ACCESS_TOKEN =
@@ -44,19 +45,8 @@ const componentClicked = (event) => {
 }
 
 ReactDOM.render(
-    <Router>
-        <FacebookLogin
-            appId="2260374724192830"
-            autoLoad={false}
-            fields="name,email,picture,friends"
-            onClick={componentClicked}
-            callback={responseFacebook} />
-
-        {/*<div>*/}
-            {/*<Route path="/user/:userId"*/}
-                   {/*component={UserProfile}>*/}
-            {/*</Route>*/}
-        {/*</div>*/}
-    </Router>,
+    <div>
+        <LoginPage/>
+    </div>,
     document.getElementById('root')
 )
