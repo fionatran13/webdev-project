@@ -48,7 +48,9 @@ ReactDOM.render(
                 {/*callback={responseFacebook} />*/}
         {/*</div>*/}
         <div>
-            <Route path="/" component={App}></Route>
+            <Route path="/home" component={App}></Route>
+            <Route path="/user/:uid" component={MemberSearchBar}></Route>
+
         </div>
 
 

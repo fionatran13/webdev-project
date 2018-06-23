@@ -8,7 +8,6 @@ import FacebookService from "../services/FacebookService";
 export default class MemberSearchBar extends React.Component {
     constructor(props) {
         super(props)
-        this.facebookService = FacebookService.instance;
         this.state = {
             id: TAM_ID,
             searchInp: '',
@@ -19,6 +18,7 @@ export default class MemberSearchBar extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.setParams(this.props.id)
         this.fetchList()
     }
@@ -36,7 +36,6 @@ export default class MemberSearchBar extends React.Component {
 
     fetchList() {
         if (this.state.id != '') {
-            console.log(this.facebookService.getFriends(this.state.id));
         }
     }
 

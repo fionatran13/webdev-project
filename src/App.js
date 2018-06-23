@@ -17,24 +17,30 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            profile: {},
+            user: {},
             friends: []
         }
-
-        // this.componentClicked = this.componentClicked.bind(this)
         this.responseFacebook = this.responseFacebook.bind(this)
     }
 
     responseFacebook(response) {
-        console.log(response);
-        FB.api(
-            '/' + response.id,
-            'GET',
-            {},
-            function(response) {
-                console.log(response)
-            }
-        );
+        console.log(response)
+        this.setState({user: response, friends: response.friends})
+        //
+        // FB.api(
+        //     '/' + response.id,
+        //     'GET',
+        //     {},
+        //     function(response) {
+        //         console.log(response)
+        //     }
+        // );
+    }
+
+    handleResponse() {
+        if(this.state.user != {} && this.state.user.id != undefined) {
+            window.location.href = '/user/' + this.state.user.id
+        }
     }
 
     render() {
@@ -43,9 +49,10 @@ export default class App extends React.Component {
                 {/*<MemberSearchBar id={2713186265573577}/>*/}
                 <FacebookLogin
                     appId="2260374724192830"
-                    autoLoad={false}
+                    autoLoad={true}
                     fields="name,email,picture,friends"
                     callback={this.responseFacebook} />
+                {this.handleResponse()}
             </div>
         )
     }
