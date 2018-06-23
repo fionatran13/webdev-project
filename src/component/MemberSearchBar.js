@@ -5,6 +5,7 @@ import GroupRow from "./GroupRow";
 import {TAM_ID} from "../index";
 import FacebookService from "../services/FacebookService";
 import FBsugestBar from "./FBsugestBar";
+import UserService from "../services/UserService";
 
 export default class MemberSearchBar extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class MemberSearchBar extends React.Component {
             list: [],
             query: []
         }
+        this.service = UserService.instance;
         this.titleChanged = this.titleChanged.bind(this)
     }
 
@@ -36,8 +38,9 @@ export default class MemberSearchBar extends React.Component {
     }
 
     fetchList() {
-        if (this.state.id != '') {
-        }
+        this.service
+            .findAllRegisteredUsers()
+            .then(response => console.log(response))
     }
 
     filterList(input) {
@@ -89,7 +92,7 @@ export default class MemberSearchBar extends React.Component {
                     </th>
                     <th><input onChange={this.titleChanged}
                                className="form-control" id="titleFld"
-                               placeholder="Find registered user by email"/></th>
+                               placeholder="Find by username"/></th>
                 </tr>
                 </thead>
                 <tbody>
