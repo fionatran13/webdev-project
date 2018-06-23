@@ -2,6 +2,7 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login';
 import {Link} from 'react-router-dom';
+import UserService from "../services/UserService";
 
 
 
@@ -12,6 +13,7 @@ export default class LoginPage extends React.Component {
             username:'',
             password:''
         }
+        this.service = UserService.instance
     }
 
     responseFacebook = (response) => {
