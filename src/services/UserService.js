@@ -12,8 +12,8 @@ export default class UserService {
         return this[_singleton]
     }
 
-    createUser(user) {
-        return fetch('http://localhost:8080/api/user', {
+    createUser(user, fbId) {
+        return fetch('http://localhost:8080/api/user/' + fbId, {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
@@ -26,6 +26,13 @@ export default class UserService {
 
     findUserById(userId) {
         return fetch('http://localhost:8080/api/user/' + userId)
+            .then(function(response) {
+                console.log(response)
+            })
+    }
+
+    findFBUserById(fbId) {
+        return fetch('http://localhost:8080/api/fbuser/' + fbId)
             .then(function(response) {
                 console.log(response)
             })

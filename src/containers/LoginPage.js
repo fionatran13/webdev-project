@@ -12,12 +12,12 @@ export default class LoginPage extends React.Component {
         this.state={
             username:'',
             password:'',
-            id: 0
+            fbId: 0
         };
         this.service = UserService.instance;
         this.setPassword = this.setPassword.bind(this);
         this.setUsername = this.setUsername.bind(this);
-        this.setId = this.setId.bind(this);
+        this.setFBId = this.setFBId.bind(this);
         this.login = this.login.bind(this);
         this.navigateToProfile = this.navigateToProfile.bind(this);
     }
@@ -34,21 +34,23 @@ export default class LoginPage extends React.Component {
         })
     }
 
-    setId(id) {
+    setFBId(id) {
         this.setState({
-            id: id
+            fbId: id
         })
     }
 
     responseFacebook = (response) => {
         console.log('id: ' + response.id);
 
-        this.service.findUserById(response.id)
-            .then(function(response) {
-                if(response === undefined) {
-                    this.setId(response.id);
-                    console.log(this.state.id)
-                    //this.service.createFBUser;
+        let self = this;
+
+        this.service.findFBUserById(response.id)
+            .then(function(result) {
+                if(result === undefined) {
+                    self.setFBId(response.id);
+                    self.setState({username: response.name});
+                    self.createFBUser();
                 } else {
 
                 }
@@ -82,6 +84,11 @@ export default class LoginPage extends React.Component {
         // }, {scope: ['user_friends']});
 
     };
+
+    createFBUser() {
+        var user = {username: this.state.username, password: this.state.password};
+        this.service.createUser(user, this.state.fbId);
+    }
 
     login() {
         var user = {username: this.state.username, password: this.state.password};
