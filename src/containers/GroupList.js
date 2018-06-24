@@ -7,11 +7,12 @@ export default class GroupList extends React.Component {
         super();
         this.groupService = GroupService.instance;
         this.state = {
-            userRole: 'admin',
-            userId: '1',
+            userRole: '',
+            userId: '',
             newGroup: {name: ''},
             list: []
         };
+        this.setParams = this.setParams.bind(this)
         this.titleChanged = this.titleChanged.bind(this);
         this.deleteGroup = this.deleteGroup.bind(this);
         this.createGroupForUser = this.createGroupForUser.bind(this);
@@ -19,11 +20,13 @@ export default class GroupList extends React.Component {
     }
 
     componentDidMount() {
-        this.setParams(this.props)
+        this.setState({userId: this.props.userId, userRole: this.props.userRole})
+        // this.setParams(this.props)
         this.fetchList()
     }
 
     setParams(params) {
+        console.log(params)
         this.setState({userId: params.userId, userRole: params.userRole})
     }
 
@@ -92,13 +95,11 @@ export default class GroupList extends React.Component {
     }
 
     fetchList() {
-        if (this.state.userId != '' && this.state.userRole != '') {
-            this.groupService
-                .findAllGroupsByUserRole(this.props.userRole, this.state.userId)
-                .then((list) => {
-                    this.setState({list: list});
-                })
-        }
+        this.groupService
+            .findAllGroupsByUserRole(this.props.userRole, this.props.userId)
+            .then((list) => {
+                this.setState({list: list});
+            })
     }
 
     titleChanged(event) {
@@ -114,14 +115,15 @@ export default class GroupList extends React.Component {
         else {
             this.groupService
                 .createGroupForUser(this.state.userId, this.state.newGroup)
-                .then((response) => {this.fetchList();});
+                .then((response) => {
+                    this.fetchList();
+                });
         }
 
     }
 
     deleteGroup(id, userRole) {
-        console.log(userRole)
-        if(userRole == 'admin') {
+        if (userRole == 'admin') {
             this.groupService
                 .deleteGroup(id)
                 .then(() => {
