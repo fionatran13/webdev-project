@@ -17,7 +17,6 @@ export default class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        console.log('id' + this.props.id)
         this.setParams(this.props.id)
         this.fetchList()
     }
