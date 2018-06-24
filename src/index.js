@@ -10,6 +10,7 @@ import FacebookLogin from 'react-facebook-login';
 import MemberSearchBar from "./component/MemberSearchBar";
 import FacebookService from "./services/FacebookService";
 import App from "./App";
+import AdminManager from "./containers/AdminManager";
 
 export const TAM_ID = '2713186265573577'
 export const TAM_ACCESS_TOKEN =
@@ -20,7 +21,8 @@ export const TAM_ACCESS_TOKEN =
 ReactDOM.render(
     <Router>
         <div>
-            <App/>
+            <Route path="/admin" component={AdminManager}></Route>
+            <Route path="/home" component={App}></Route>
         </div>
     </Router>,
     document.getElementById('root')

@@ -18,7 +18,7 @@ export default class UserService {
     }
 
 
-    findAllRegisteredUsers() {
+    findAllUsers() {
         return fetch(USER_API)
             .then(function (response) {
                 return response.json();
@@ -31,4 +31,17 @@ export default class UserService {
                 return response.json();
             });
     }
+
+    createUser(user) {
+        return fetch(USER_API, {
+            method: 'post',
+            body: JSON.stringify(user), //convert json to string
+            headers: {
+                'content-type': 'application/json' //notify the server to know the post file is json
+            }
+        }).then(function(response) {
+            return response.json();
+        });
+    }
+
 }

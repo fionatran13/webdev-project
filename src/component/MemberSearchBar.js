@@ -33,7 +33,6 @@ export default class MemberSearchBar extends React.Component {
     }
 
     selectMember(id) {
-        console.log(id)
         this.setState({selectedMId: id})
         this.service
             .findUserByID(id)
@@ -55,7 +54,7 @@ export default class MemberSearchBar extends React.Component {
 
     fetchList() {
         this.service
-            .findAllRegisteredUsers()
+            .findAllUsers()
             .then((list) => {
                 this.setState({list: list});
             })
@@ -129,7 +128,12 @@ export default class MemberSearchBar extends React.Component {
                         {this.suggestFacebookFriends()}
                     </th>
                 </tr>
-                {this.renderQuery()}
+                <tr>
+                    <th></th>
+                    <th>
+                        {this.renderQuery()}
+                    </th>
+                </tr>
                 </tbody>
             </table>
 
