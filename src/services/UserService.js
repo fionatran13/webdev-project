@@ -13,7 +13,7 @@ export default class UserService {
     }
 
     createUser(user) {
-        return fetch('http:localhost:8080/api/user', {
+        return fetch('http://localhost:8080/api/user', {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
@@ -25,9 +25,28 @@ export default class UserService {
     }
 
     findUserById(userId) {
-        return fetch('http:localhost:8080/api/user/' + userId)
+        return fetch('http://localhost:8080/api/user/' + userId)
+            .then(function(response) {
+                console.log(response)
+            })
+    }
+
+    findUserByUsername(username) {
+        return fetch('http://localhost:8080/api/username/' + username)
             .then(function(response) {
                 return response.json();
             })
+    }
+
+    login(user) {
+        return fetch('http://localhost:8080/api/login', {
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(function (response) {
+            return response.json();
+        })
     }
 }

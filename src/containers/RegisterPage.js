@@ -9,8 +9,11 @@ export default class RegisterPage extends React.Component {
             username: '',
             password: '',
             password2: ''
-        }
+        };
         this.service = UserService.instance;
+        this.setPassword = this.setPassword.bind(this);
+        this.setPassword2 = this.setPassword2.bind(this);
+        this.setUsername = this.setUsername.bind(this);
     }
 
     verify() {
@@ -26,6 +29,24 @@ export default class RegisterPage extends React.Component {
         this.service.createUser(user);
     }
 
+    setUsername(event) {
+        this.setState({
+            username: event.target.value
+        })
+    }
+
+    setPassword(event) {
+        this.setState({
+            password: event.target.value
+        })
+    }
+
+    setPassword2(event) {
+        this.setState({
+            password2: event.target.value
+        })
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -35,21 +56,24 @@ export default class RegisterPage extends React.Component {
                     <h3>Username</h3>
                     <input placeholder="Username"
                            className="form-control"
-                           value={this.state.username}/>
+                           value={this.state.username}
+                            onChange={this.setUsername}/>
                 </div>
 
                 <div className="form-group">
                     <h3>Password</h3>
                     <input placeholder="Password"
                            className="form-control"
-                           value={this.state.password}/>
+                           value={this.state.password}
+                            onChange={this.setPassword}/>
                 </div>
 
                 <div className="form-group">
                     <h3>Verify Password</h3>
                     <input placeholder="Password"
                            className="form-control"
-                           value={this.state.password2}/>
+                           value={this.state.password2}
+                            onChange={this.setPassword2}/>
                 </div>
 
                 <div className="form-group">
