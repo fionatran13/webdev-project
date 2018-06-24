@@ -5,7 +5,7 @@ export default class GroupRow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id:'2',
+            id:'1',
             userRole: ''
         }
     }
@@ -23,7 +23,7 @@ export default class GroupRow extends React.Component {
         return (
             <tr>
                 <td>
-                    <Link to={`/group/${this.props.info.id}`}>
+                    <Link to={`/user/1/group/${this.props.info.id}`}>
                         {this.props.info.name}
                     </Link>
                 </td>

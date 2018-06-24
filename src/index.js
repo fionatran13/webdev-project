@@ -22,7 +22,7 @@ export const TAM_ACCESS_TOKEN =
 ReactDOM.render(
     <Router>
         <div>
-            <Route path="/user/:userId"
+            <Route path="/user/:userId/profile"
                    component={UserProfile}>
             </Route>
 
@@ -40,6 +40,10 @@ ReactDOM.render(
 
             <Route path="/home"
                    component={App}>
+            </Route>
+
+            <Route path="/user/:userId/group/:groupId"
+                   component={GroupPage}>
             </Route>
         </div>
     </Router>,

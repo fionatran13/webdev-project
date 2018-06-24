@@ -8,7 +8,7 @@ export default class GroupList extends React.Component {
         this.groupService = GroupService.instance;
         this.state = {
             userRole: 'admin',
-            userId: '2',
+            userId: '1',
             newGroup: {name: ''},
             list: []
         };

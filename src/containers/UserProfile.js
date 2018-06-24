@@ -13,15 +13,23 @@ export default class UserProfile extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         this.setState({userId: this.props.match.params.userId});
     }
 
+    renderSearchBar() {
+        if(this.state.userId !== '') {
+            return(<SearchBar id={this.state.userId}/>)
+        }
+    }
+
     render() {
+        console.log(this.state.userId)
         return (
             <div>
                 <h1>User Profile</h1>
                 <br/>
-                <SearchBar id={this.state.userId}/>
+                {this.renderSearchBar()}
                 <br/>
 
                 <GroupList userId={this.props.match.params.userId} userRole="admin"/>

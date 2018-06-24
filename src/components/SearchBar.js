@@ -8,7 +8,7 @@ export default class SearchBar extends React.Component {
         super(props)
         this.groupService = GroupService.instance;
         this.state = {
-            id:'2',
+            id:'',
             searchGroupName: '',
             list: [],
             query: []
@@ -17,6 +17,7 @@ export default class SearchBar extends React.Component {
     }
 
     componentDidMount() {
+        console.log('id' + this.props.id)
         this.setParams(this.props.id)
         this.fetchList()
     }

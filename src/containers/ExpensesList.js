@@ -51,6 +51,7 @@ export default class ExpensesList extends React.Component {
 
     addExpense() {
         //TODO: create Expense form
+        //reuse member search bar
     }
 
     deleteExpense() {

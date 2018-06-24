@@ -20,6 +20,7 @@ export default class GroupService {
 
 
     findAllGroupsForUser(uid) {
+        console.log(GROUP_USER_URL.replace('UID', uid))
         return fetch(GROUP_USER_URL.replace('UID', uid))
             .then(function (response) {
                 return response.json();
