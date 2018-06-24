@@ -50,8 +50,7 @@ export default class ExpensesList extends React.Component {
     }
 
     addExpense() {
-        //TODO: create Expense form
-        //reuse member search bar
+        window.location.href = '/group/' + this.state.groupId + '/expense'
     }
 
     deleteExpense() {
@@ -80,7 +79,7 @@ export default class ExpensesList extends React.Component {
                 </ul>
                     <button id="addBtn"
                             type="button"
-                            className="btn"
+                            className="btn btn-success"
                             onClick={this.addExpense}>
                         Add new expense
                     </button>

@@ -12,6 +12,7 @@ import MemberSearchBar from "./components/MemberSearchBar";
 import FacebookService from "./services/FacebookService";
 import App from "./App";
 import AdminManager from "./containers/AdminManager";
+import ExpenseForm from "./components/ExpenseForm";
 
 
 export const TAM_ID = '2713186265573577'
@@ -44,6 +45,10 @@ ReactDOM.render(
 
             <Route path="/user/:userId/group/:groupId"
                    component={GroupPage}>
+            </Route>
+
+            <Route path="/group/:groupId/expense"
+                   component={ExpenseForm}>
             </Route>
         </div>
     </Router>,
