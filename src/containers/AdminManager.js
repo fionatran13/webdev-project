@@ -68,7 +68,7 @@ export default class AdminManager extends React.Component {
                 password: this.state.pwInp,
                 email: this.state.emailInp,
                 pictureUrl: this.state.picInp};
-            this.userService.createUser(newUser)
+            this.userService.createUser(newUser, 0)
                 .then(response => this.fetchUsers())
         }
         else if(this.state.userRoleInp == 'Admin') {

@@ -33,17 +33,6 @@ export default class UserService {
             });
     }
 
-    createUser(user) {
-        return fetch(USER_API, {
-            method: 'post',
-            body: JSON.stringify(user), //convert json to string
-            headers: {
-                'content-type': 'application/json' //notify the server to know the post file is json
-            }
-        }).then(function(response) {
-            return response.json();
-        });
-    }
 
     createAdmin(user) {
         return fetch(ADMIN_API, {
@@ -57,21 +46,6 @@ export default class UserService {
         });
     }
 
-}
-let _singleton = Symbol();
-
-export default class UserService {
-    constructor(singletonToken) {
-        if (_singleton !== singletonToken)
-            throw new Error('Cannot instantiate directly.');
-    }
-
-    static get instance() {
-        if (!this[_singleton])
-            this[_singleton] = new UserService(_singleton);
-        return this[_singleton]
-    }
-
     createUser(user, fbId) {
         return fetch('http://localhost:8080/api/user/' + fbId, {
             body: JSON.stringify(user),
@@ -82,13 +56,6 @@ export default class UserService {
         }).then(function (response) {
             return response.json();
         })
-    }
-
-    findUserById(userId) {
-        return fetch('http://localhost:8080/api/user/' + userId)
-            .then(function(response) {
-                console.log(response)
-            })
     }
 
     findFBUserById(fbId) {
