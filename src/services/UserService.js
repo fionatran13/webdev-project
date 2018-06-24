@@ -61,7 +61,7 @@ export default class UserService {
     findFBUserById(fbId) {
         return fetch('http://localhost:8080/api/fbuser/' + fbId)
             .then(function(response) {
-                console.log(response)
+                return response.json();
             })
     }
 

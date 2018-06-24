@@ -51,7 +51,8 @@ export default class LoginPage extends React.Component {
     redirect() {
         if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
             this.setState({loggedIn: true})
-            return <Redirect to={'/user/' + this.state.user.id}/>
+            //return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
+            window.location.href = '/user/' + this.state.user.id + '/profile'
         }
     }
 
@@ -68,7 +69,10 @@ export default class LoginPage extends React.Component {
                     self.setState({username: response.name});
                     self.createFBUser();
                 } else {
-
+                    self.service.findUserByID(response.id)
+                        .then((res) =>
+                        self.setState({user: res}))
+                        .then(self.redirect())
                 }
             });
     }
