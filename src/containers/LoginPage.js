@@ -128,7 +128,7 @@ export default class LoginPage extends React.Component {
     render() {
         return (
             <Router>
-
+                <div>
                 <div className="container-fluid">
                     {/*<Route path="/user/:userId/group/:groupId"*/}
                            {/*render={() => console.log(this.state.user)*/}
@@ -175,6 +175,7 @@ export default class LoginPage extends React.Component {
                         <a>Don't have an account? Register </a>
                         <Link to={`/register`}>here.</Link>
                     </div>
+                </div>
                 </div>
             </Router>
         )
