@@ -1,6 +1,6 @@
 import React from 'react';
 import GroupService from "../services/GroupService";
-import GroupRow from "../component/GroupRow";
+import GroupRow from "../components/GroupRow";
 
 export default class GroupList extends React.Component {
     constructor() {

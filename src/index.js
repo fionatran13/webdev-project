@@ -8,7 +8,7 @@ import UserProfile from "./containers/UserProfile";
 import FacebookLogin from 'react-facebook-login';
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
-import MemberSearchBar from "./component/MemberSearchBar";
+import MemberSearchBar from "./components/MemberSearchBar";
 import FacebookService from "./services/FacebookService";
 import App from "./App";
 import AdminManager from "./containers/AdminManager";

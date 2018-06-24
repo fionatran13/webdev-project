@@ -1,6 +1,6 @@
 import React from 'react'
 import UserService from "../services/UserService";
-import UserRow from "../component/UserRow";
+import UserRow from "../components/UserRow";
 
 export default class AdminManager extends React.Component {
     constructor(props) {

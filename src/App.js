@@ -6,7 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 import FacebookLogin from 'react-facebook-login';
-import MemberSearchBar from "./component/MemberSearchBar";
+import MemberSearchBar from "./components/MemberSearchBar";
 
 export const TAM_ID = '2713186265573577'
 export const TAM_ACCESS_TOKEN =

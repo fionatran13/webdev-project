@@ -1,6 +1,6 @@
 import React from 'react'
 import GroupList from "./GroupList";
-import SearchBar from "../component/SearchBar";
+import SearchBar from "../components/SearchBar";
 
 export default class UserProfile extends React.Component {
     constructor(props) {
