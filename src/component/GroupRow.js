@@ -46,7 +46,6 @@ export default class GroupRow extends React.Component {
     }
 
     getOwner() {
-        console.log()
         return this.props.info.admin
     }
 }

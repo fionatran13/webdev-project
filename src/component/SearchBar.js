@@ -27,7 +27,7 @@ export default class SearchBar extends React.Component {
 
     titleChanged(event) {
         this.setState({
-            searchGroupName: event.target.value
+            searchInp: event.target.value
         });
         this.filterList(event.target.value)
     }
