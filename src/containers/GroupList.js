@@ -47,6 +47,19 @@ export default class GroupList extends React.Component {
         )
     }
 
+    renderInstruction() {
+        if(this.state.userRole == 'admin') {
+            return (<div className="alert alert-success" role="alert">
+                <strong>Create group as admin</strong>
+            </div>)
+        } else {
+            return (<div className="alert alert-success" role="alert">
+                Request a group admin to add you to a group as a member
+            </div>)
+        }
+
+    }
+
     render() {
         return (
             <div>
@@ -55,6 +68,7 @@ export default class GroupList extends React.Component {
                         Groups you are in as {this.state.userRole}
                     </h2>
                 </div>
+                {this.renderInstruction()}
                 <table className="table">
                     <thead>
                     <tr hidden={this.state.userRole != 'admin'}>
