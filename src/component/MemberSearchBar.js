@@ -3,6 +3,7 @@ import {TAM_ID} from "../index";
 import FBsugestBar from "./FBsugestBar";
 import UserService from "../services/UserService";
 import GroupService from "../services/GroupService";
+import FBFriend from "./FBFriend";
 
 export default class MemberSearchBar extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export default class MemberSearchBar extends React.Component {
         this.groupService = GroupService.instance;
         this.service = UserService.instance;
         this.titleChanged = this.titleChanged.bind(this)
+        this.selectMember = this.selectMember.bind(this)
     }
 
     componentDidMount() {
@@ -31,8 +33,11 @@ export default class MemberSearchBar extends React.Component {
     }
 
     selectMember(id) {
+        console.log(id)
         this.setState({selectedMId: id})
-        console.log(this.state.selectedMId)
+        this.service
+            .findUserByID(id)
+            .then(response => this.setState({searchInp: response.username}))
     }
 
     addMemberToGroup() {
@@ -90,7 +95,7 @@ export default class MemberSearchBar extends React.Component {
 
     suggestFacebookFriends() {
         if(Array.isArray(this.state.friends)) {
-            return (<FBsugestBar friends={this.state.friends}/>)
+            return (<FBsugestBar friends={this.state.friends} select={this.selectMember}/>)
         }
     }
 
@@ -105,6 +110,7 @@ export default class MemberSearchBar extends React.Component {
                         </button>
                     </th>
                     <th><input onChange={this.titleChanged}
+                               value={this.state.searchInp}
                                className="form-control" id="titleFld"
                                placeholder="Find by username"/>
                     </th>
@@ -118,7 +124,10 @@ export default class MemberSearchBar extends React.Component {
                 </thead>
                 <tbody>
                 <tr>
-                    {this.suggestFacebookFriends()}
+                    <th></th>
+                    <th>
+                        {this.suggestFacebookFriends()}
+                    </th>
                 </tr>
                 {this.renderQuery()}
                 </tbody>

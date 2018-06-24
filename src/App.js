@@ -25,7 +25,6 @@ export default class App extends React.Component {
     }
 
     responseFacebook(response) {
-        console.log(response)
         this.setState({user: response, friends: response.friends})
         //
         // FB.api(

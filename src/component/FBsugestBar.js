@@ -4,6 +4,7 @@ import GroupService from "../services/GroupService";
 import GroupRow from "./GroupRow";
 import {TAM_ID} from "../index";
 import FacebookService from "../services/FacebookService";
+import FBFriend from "./FBFriend";
 
 export default class FBsugestBar extends React.Component {
     constructor(props) {
@@ -23,9 +24,12 @@ export default class FBsugestBar extends React.Component {
 
     renderList() {
         let list = null;
+        let self = this;
         list = this.state.list.map(
             function (item) {
-                return <th key={item.id}>{item.name}</th>
+                return <div onClick={() => self.props.select(item.id)}>
+                    <FBFriend key={item.id} friend={item}/>
+                </div>
             }
         )
         return (
@@ -35,9 +39,9 @@ export default class FBsugestBar extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.renderList()}
-            </div>
+        <div className="card-deck">
+            {this.renderList()}
+        </div>
         )
     }
 }
