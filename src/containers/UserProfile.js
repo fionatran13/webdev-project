@@ -13,7 +13,6 @@ export default class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         this.setState({userId: this.props.match.params.userId});
     }
 
@@ -23,8 +22,16 @@ export default class UserProfile extends React.Component {
         }
     }
 
+    renderGroupLists() {
+        if(this.state.userId !== '') {
+            return(<div>
+                <GroupList userId={this.state.userId} userRole="admin"/>
+                <GroupList userId={this.state.userId} userRole="member"/>
+            </div>)
+        }
+    }
+
     render() {
-        console.log(this.state.userId)
         return (
             <div>
                 <h1>User Profile</h1>
@@ -32,8 +39,7 @@ export default class UserProfile extends React.Component {
                 {this.renderSearchBar()}
                 <br/>
 
-                <GroupList userId={this.props.match.params.userId} userRole="admin"/>
-                <GroupList userId={this.props.match.params.userId} userRole="member"/>
+                {this.renderGroupLists()}
             </div>
         )
     }
