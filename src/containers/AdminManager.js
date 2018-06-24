@@ -72,7 +72,12 @@ export default class AdminManager extends React.Component {
                 .then(response => this.fetchUsers())
         }
         else if(this.state.userRoleInp == 'Admin') {
-            console.log('creating admin')
+            const newUser = {username: this.state.usernameInp,
+                password: this.state.pwInp,
+                email: this.state.emailInp,
+                pictureUrl: this.state.picInp};
+            this.userService.createAdmin(newUser)
+                .then(response => this.fetchUsers())
         }
         else {
             alert('Choose user role')
@@ -105,7 +110,7 @@ export default class AdminManager extends React.Component {
                             <select id="roleFld" className="form-control" onChange={this.setUserRole}>
                                 <option> </option>
                                 <option>User</option>
-                                <option>Admin</option>
+                                {/*<option>Admin</option>*/}
                             </select>
                         </th>
                         <th>
