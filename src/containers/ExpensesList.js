@@ -22,7 +22,6 @@ export default class ExpensesList extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         this.setGroupId(this.props.groupId);
     }
 

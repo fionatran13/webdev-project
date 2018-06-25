@@ -25,7 +25,7 @@ export default class ExpenseForm extends React.Component {
     }
 
     componentDidMount() {
-        this.setGroupId(this.props.groupId);
+        this.setGroupId(this.props.match.params.groupId);
         // this.setUserId(this.props.userId);
     }
 
@@ -78,6 +78,18 @@ export default class ExpenseForm extends React.Component {
                 </div>
 
                 <div className="form-group">
+                    <h3>Expenser</h3>
+                    <input className="form-control" placeholder="user Id"/>
+                    <button id="addBtn"
+                            type="button"
+                            className="btn"
+                            onClick={this.setExpenser}>
+                        <i className="fa fa-plus"></i>
+                    </button>
+                    {/*<MemberSearchBar/>*/}
+                </div>
+
+                <div className="form-group">
                     <h3>Expense Type</h3>
                     <select className="form-control" onChange={this.setType}>
                         <option value="Accommodation">Accommodation</option>
@@ -94,33 +106,9 @@ export default class ExpenseForm extends React.Component {
                 </div>
 
                 <div className="form-group">
-                    <h3>Due Date</h3>
+                    <h3>Expense Date</h3>
                     <input placeholder="mm/dd/yyyy" className="form-control"
                         onChange={this.setDate}/>
-                </div>
-
-                <div className="form-group">
-                    <h3>Add Members from Group</h3>
-                    <input className="form-control"/>
-                    <button id="addBtn"
-                            type="button"
-                            className="btn"
-                            onClick={this.addMember}>
-                        <i className="fa fa-plus"></i>
-                    </button>
-                    {/*<MemberSearchBar/>*/}
-                </div>
-
-                <div className="form-group">
-                    <h3>Add Expenser</h3>
-                    <input className="form-control"/>
-                    <button id="addBtn"
-                            type="button"
-                            className="btn"
-                            onClick={this.setExpenser}>
-                        <i className="fa fa-plus"></i>
-                    </button>
-                    {/*<MemberSearchBar/>*/}
                 </div>
 
                 <div className="form-group">
