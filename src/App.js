@@ -22,35 +22,30 @@ export const TAM_ACCESS_TOKEN =
 
 
 export default class App extends React.Component {
-    state = {
-        loggedIn: false,
-        friends: {},
-        user: {}
-    };
 
     constructor(props) {
         super(props);
-        // this.state = {
-        //     loggedIn: false,
-        //     user: {},
-        //     friends: {}
-        // }
+        this.state = {
+            loggedIn: false,
+            user: {},
+            friends: {}
+        }
         // this.responseFacebook = this.responseFacebook.bind(this)
         this.setFriends = this.setFriends.bind(this)
     }
 
-    responseFacebook(response) {
-        this.setState({user: response, friends: response.friends})
-        //
-        // FB.api(
-        //     '/' + response.id,
-        //     'GET',
-        //     {},
-        //     function(response) {
-        //         console.log(response)
-        //     }
-        // );
-    }
+    // responseFacebook(response) {
+    //     this.setState({user: response, friends: response.friends})
+    //     //
+    //     // FB.api(
+    //     //     '/' + response.id,
+    //     //     'GET',
+    //     //     {},
+    //     //     function(response) {
+    //     //         console.log(response)
+    //     //     }
+    //     // );
+    // }
 
     // handleResponse() {
     //     if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
@@ -60,23 +55,20 @@ export default class App extends React.Component {
     // }
 
     setFriends(friends) {
-        console.log('HELLOOO')
-        console.log(friends)
         this.friendss = friends
-        console.log(this.friendss)
         this.setState({friends: friends})
     }
 
     renderMemSearch(gid) {
-        console.log(gid)
-        if(this.state.user != {} && this.state.friends != {})
+        console.log('RENDER SEARCH BAR')
+        if(this.state.user !== {} && this.state.friends !== {})
+            console.log(this.state)
         return (<MemberSearchBar gid={gid} user={this.state.user}
                                  friends={this.state.friends.data}/>)
     }
 
     render() {
-        console.log('APP RENDER')
-        console.log(this.state)
+
         return (
         <Switch>
             <div>

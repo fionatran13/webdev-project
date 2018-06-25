@@ -6,6 +6,7 @@ import UserService from "../services/UserService";
 import MemberSearchBar from "../components/MemberSearchBar";
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import GroupPage from "./GroupPage";
+import RegisterPage from "./RegisterPage";
 
 
 export default class LoginPage extends React.Component {
@@ -16,8 +17,8 @@ export default class LoginPage extends React.Component {
             password: '',
             fbId: 0,
             loggedIn: false,
-            friends: [],
-            user: {}
+            friends: '',
+            user: ''
         };
         this.service = UserService.instance;
         this.setPassword = this.setPassword.bind(this);
@@ -55,7 +56,7 @@ export default class LoginPage extends React.Component {
             //console.log(this.service.findAdminById(this.state.user.id));
             var admin = this.service.findAdminById(this.state.user.id);
             if(admin !== null) {
-                window.location.href = '/user/' + this.state.user.id + '/profile/edit'
+                window.location.href = '/user/' + this.state.user.id + '/fblogin'
             } else {
                 window.location.href = '/admin'
             }
@@ -63,9 +64,8 @@ export default class LoginPage extends React.Component {
     }
 
     responseFacebook(response) {
-        console.log(this.props)
         this.props.setFriends(response.friends)
-        this.setState({user: response, friends: response.friends})
+        this.setState({user: response, friends: response.friends, loggedIn: true})
 
         let self = this;
 
@@ -79,7 +79,7 @@ export default class LoginPage extends React.Component {
                     self.service.findUserByID(response.id)
                         .then((res) =>
                         self.setState({user: res}))
-                        .then(self.redirect())
+                        // .then(self.redirect())
                 }
             });
     }
@@ -105,12 +105,6 @@ export default class LoginPage extends React.Component {
     // });
 
 
-    componentClicked = (event) => {
-        // FB.login(function(response) {
-        //     console.log(response)
-        // }, {scope: ['user_friends']});
-
-    };
 
     createFBUser() {
         var user = {username: this.state.username, password: this.state.password};
@@ -143,11 +137,23 @@ export default class LoginPage extends React.Component {
         this.service.findUserByUsername(this.state.username);
     }
 
+
+    renderMemSearch(gid) {
+        if(this.state.user != '' && this.state.friends != '')
+            return (<div>
+                <MemberSearchBar gid={gid} user={this.state.user}
+                                 friends={this.state.friends.data} mode="view"/>
+                <button className="btn btn-block btn-info"
+                        onClick={() => window.location.href = '/user/' + this.state.user.id + '/profile/edit'}>
+                    View Your Profile
+                </button>
+            </div>)
+    }
+
     render() {
         return (
             <Switch>
-                <div>
-                <div className="container-fluid">
+                <div className="container-fluid" >
                     {/*<Route path="/user/:userId/group/:groupId"*/}
                            {/*render={() => console.log(this.state.user)*/}
                                {/*// <MemberSearchBar user={this.state.user}*/}
@@ -156,9 +162,10 @@ export default class LoginPage extends React.Component {
                            {/*component={GroupPage}*/}
                     {/*>*/}
                     {/*</Route>*/}
-                </div>
+                    {this.renderMemSearch()}
+                <div hidden={this.state.loggedIn}>
 
-                <div className="container-fluid">
+
                     <h2>Login with Facebook or your Split the Bill account</h2>
 
                     <div className="form-group">
@@ -187,7 +194,7 @@ export default class LoginPage extends React.Component {
                             fields="name,email,picture,friends"
                             callback={this.responseFacebook}/>
                     </div>
-                    {this.redirect()}
+                    {/*{this.redirect()}*/}
 
                     <div className="form-group">
                         <a>Don't have an account? Register </a>
