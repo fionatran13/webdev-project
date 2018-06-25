@@ -61,7 +61,7 @@ export default class UserService {
     findFBUserById(fbId) {
         return fetch('http://localhost:8080/api/fbuser/' + fbId)
             .then(function(response) {
-                console.log(response)
+                return response.json();
             })
     }
 
@@ -82,5 +82,29 @@ export default class UserService {
         }).then(function (response) {
             return response.json();
         })
+    }
+
+    updateUser(userId, user) {
+        return fetch('http://localhost:8080/api/user/' + userId, {
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
+        })
+    }
+
+    getAllExpensesforUser(userId) {
+        return fetch('http://localhost:8080/api/user/' + userId + '/expenses')
+            .then(function(response) {
+                return response.json();
+            });
+    }
+
+    getAllDuesforUser(userId) {
+        return fetch('http://localhost:8080/api/user/' + userId + '/due')
+            .then(function(response) {
+                return response.json();
+            });
     }
 }

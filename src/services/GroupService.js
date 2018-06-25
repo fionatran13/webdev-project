@@ -18,6 +18,12 @@ export default class GroupService {
         return this[_singleton]
     }
 
+    findAllGroups() {
+        return fetch(LOCAL_URL + '/api/group')
+            .then(function(response) {
+                return response.json();
+            })
+    }
 
     findAllGroupsForUser(uid) {
         console.log(GROUP_USER_URL.replace('UID', uid))
@@ -28,6 +34,7 @@ export default class GroupService {
     }
 
     findAllGroupsByUserRole(userRole, uid) {
+        console.log(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
         return fetch(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
             .then(function (response) {
                 return response.json();
@@ -61,22 +68,22 @@ export default class GroupService {
 
 
     findAllMembersForGroup(groupId) {
-        return fetch('http:localhost:8080/api/group/' + groupId + '/members')
+        return fetch('http://localhost:8080/api/group/' + groupId + '/members')
             .then(function (response) {
+                console.log(response)
                 return response.json();
             })
     }
 
     updateMembers(groupId, members) {
-        return fetch('http:localhost:8080/api/group/' + groupId + '/members',
+        return fetch('http://localhost:8080/api/group/' + groupId + '/members',
             {
                 body: JSON.stringify(members),
                 headers: {'Content-Type': 'application/json'},
                 method: 'PUT'
-            })
-            .then(function (response) {
-                return response.json();
-            })
+            }).then(function (response) {
+            return (response);
+        })
     }
 
     addMemberByIdToGroup(groupId, memberId) {

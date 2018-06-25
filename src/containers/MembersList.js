@@ -10,7 +10,8 @@ export default class MembersList extends React.Component {
         this.state = {
             groupId: 0,
             member: {username: ''},
-            members: []
+            members: [],
+            anonymous: this.props.anonymous
         };
         this.setGroupId = this.setGroupId.bind(this);
         this.setUsername = this.setUsername.bind(this);
@@ -21,6 +22,8 @@ export default class MembersList extends React.Component {
 
     componentDidMount() {
         this.setGroupId(this.props.groupId);
+        this.findAllMembersForGroup(this.props.groupId);
+        console.log(this.state.anonymous)
     }
 
     setGroupId(groupId) {
@@ -92,12 +95,14 @@ export default class MembersList extends React.Component {
                         <input className="form-control mr-sm-1"
                                placeholder="New member"
                                value={this.state.member.username}
-                               onChange={this.setUsername}/>
+                               onChange={this.setUsername}
+                               hidden={this.state.anonymous}/>
                         <span className="input-group-btn">
                     <button id="addBtn"
                             type="button"
                             className="btn"
-                            onClick={this.addMember}>
+                            onClick={this.addMember}
+                            hidden={this.state.anonymous}>
                         <i className="fa fa-plus"></i>
                     </button>
                     </span>

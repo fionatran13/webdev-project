@@ -1,12 +1,20 @@
 /* global FB */
 import React from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 import FacebookLogin from 'react-facebook-login';
 import MemberSearchBar from "./components/MemberSearchBar";
+import AnonymousSearchPage from "./containers/AnonymousSearchPage";
+import Homepage from "./containers/Homepage";
+import LoginPage from "./containers/LoginPage";
+import AdminManager from "./containers/AdminManager";
+import ExpenseForm from "./components/ExpenseForm";
+import GroupPage from "./containers/GroupPage";
+import RegisterPage from "./containers/RegisterPage";
+import UserProfile from "./containers/UserProfile";
 
 export const TAM_ID = '2713186265573577'
 export const TAM_ACCESS_TOKEN =
@@ -14,14 +22,16 @@ export const TAM_ACCESS_TOKEN =
 
 
 export default class App extends React.Component {
+    // statet: AppState
     constructor(props) {
         super(props);
         this.state = {
             loggedIn: false,
             user: {},
-            friends: []
+            friends: {}
         }
-        this.responseFacebook = this.responseFacebook.bind(this)
+        // this.responseFacebook = this.responseFacebook.bind(this)
+        this.setFriends = this.setFriends.bind(this)
     }
 
     responseFacebook(response) {
@@ -37,34 +47,112 @@ export default class App extends React.Component {
         // );
     }
 
-    handleResponse() {
-        if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
-            this.setState({loggedIn: true})
-            return <Redirect to={'/user/' + this.state.user.id}/>
-        }
+    // handleResponse() {
+    //     if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
+    //         this.setState({loggedIn: true})
+    //         return <Redirect to={'/user/' + this.state.user.id}/>
+    //     }
+    // }
+
+    setFriends(friends) {
+        console.log('HELLOOO')
+        console.log(friends)
+        this.friendss = friends
+        console.log(this.friendss)
+        this.setState({friends: friends})
+    }
+
+    renderMemSearch() {
+        console.log(this.state)
+        if(this.state.user != {} && this.state.friends != {})
+        return (<MemberSearchBar user={this.state.user}
+                                 friends={this.state.friends.data}/>)
     }
 
     render() {
+        console.log('APP RENDER')
+        console.log(this.friendss)
         return (
-            <Router>
-                <div>
-                    <div className="container-fluid">
-                        <Route path="/user/:uid"
-                               render={() => <MemberSearchBar user={this.state.user}
-                                                              friends={this.state.friends.data}/>}>
-                        </Route>
-                    </div>
-                    <div hidden={this.state.loggedIn}>
-                        <FacebookLogin
-                            appId="2260374724192830"
-                            autoLoad={true}
-                            fields="name,email,picture,friends"
-                            callback={this.responseFacebook}/>
-                        {this.handleResponse()}
-                    </div>
-                </div>
+        <Switch>
+            <div>
+                <Route path="/user/:userId/profile"
+                       component={UserProfile}>
+                </Route>
 
-            </Router>
-        )
+                <Route path="/login"
+                       render={() => <LoginPage setFriends={this.setFriends}/>}>
+                </Route>
+
+                <Route path="/register"
+                       component={RegisterPage}>
+                </Route>
+
+                <Route path="/admin"
+                       component={AdminManager}>
+                </Route>
+
+                <Route path="/app"
+                       component={App}>
+                </Route>
+
+                <Route path="/user/:userId/group/:groupId"
+                       component={GroupPage}>
+                </Route>
+
+                <Route path="/group/:groupId/expense"
+                       component={ExpenseForm}>
+                </Route>
+
+                <Route path="/anonymous"
+                       component={AnonymousSearchPage}>
+                </Route>
+
+                <Route path="/home"
+                       component={Homepage}>
+                </Route>
+
+                <Route path="/user/:uid"
+                       render={() => this.renderMemSearch()}>
+                </Route>
+            </div>
+        </Switch>
+    )
     }
 }
+
+// {/*<Router>*/}
+// {/*<div>*/
+// }
+// {/*<div className="container-fluid">*/
+// }
+// {/*<Route path="/user/:uid"*/
+// }
+// {/*render={() => <MemberSearchBar user={this.state.user}*/
+// }
+// {/*friends={this.state.friends.data}/>}>*/
+// }
+// {/*</Route>*/
+// }
+// {/*</div>*/
+// }
+// {/*<div hidden={this.state.loggedIn}>*/
+// }
+// {/*<FacebookLogin*/
+// }
+// {/*appId="2260374724192830"*/
+// }
+// {/*autoLoad={true}*/
+// }
+// {/*fields="name,email,picture,friends"*/
+// }
+// {/*callback={this.responseFacebook}/>*/
+// }
+// {/*{this.handleResponse()}*/
+// }
+// {/*</div>*/
+// }
+// {/*</div>*/
+// }
+//
+// {/*</Router>*/
+// }

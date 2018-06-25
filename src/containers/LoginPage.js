@@ -51,13 +51,15 @@ export default class LoginPage extends React.Component {
     redirect() {
         if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
             this.setState({loggedIn: true})
-            return <Redirect to={'/user/' + this.state.user.id}/>
+            //return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
+             window.location.href = '/user/' + this.state.user.id + '/profile'
         }
     }
 
     responseFacebook(response) {
+        console.log(this.props)
+        this.props.setFriends(response.friends)
         this.setState({user: response, friends: response.friends})
-        console.log('id: ' + response.id);
 
         let self = this;
 
@@ -68,7 +70,10 @@ export default class LoginPage extends React.Component {
                     self.setState({username: response.name});
                     self.createFBUser();
                 } else {
-
+                    self.service.findUserByID(response.id)
+                        .then((res) =>
+                        self.setState({user: res}))
+                        .then(self.redirect())
                 }
             });
     }
@@ -109,7 +114,7 @@ export default class LoginPage extends React.Component {
     handleResponse(response) {
         console.log(response)
         if (response.status !== 500) {
-            window.location.href = '/user/' + response.id + '/profile'
+            return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
         } else {
             window.alert('Invalid credentials')
         }
@@ -165,11 +170,11 @@ export default class LoginPage extends React.Component {
                     <div hidden={this.state.loggedIn}>
                         <FacebookLogin
                             appId="2260374724192830"
-                            autoLoad={true}
+                            autoLoad={false}
                             fields="name,email,picture,friends"
                             callback={this.responseFacebook}/>
-                        {this.redirect()}
                     </div>
+                    {this.redirect()}
 
                     <div className="form-group">
                         <a>Don't have an account? Register </a>

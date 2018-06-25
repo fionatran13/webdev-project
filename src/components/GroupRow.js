@@ -20,6 +20,7 @@ export default class GroupRow extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <tr>
                 <td>
@@ -46,6 +47,6 @@ export default class GroupRow extends React.Component {
     }
 
     getOwner() {
-        return this.props.info.admin
+        return this.props.info.admin.username
     }
 }

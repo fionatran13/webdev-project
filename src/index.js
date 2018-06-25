@@ -12,6 +12,10 @@ import MemberSearchBar from "./components/MemberSearchBar";
 import FacebookService from "./services/FacebookService";
 import App from "./App";
 import AdminManager from "./containers/AdminManager";
+import ExpenseForm from "./components/ExpenseForm";
+import AnonymousSearchPage from "./containers/AnonymousSearchPage";
+import Homepage from "./containers/Homepage";
+
 
 
 export const TAM_ID = '2713186265573577'
@@ -20,33 +24,7 @@ export const TAM_ACCESS_TOKEN =
 
 
 ReactDOM.render(
-    <Router>
-        <div>
-            <Route path="/user/:userId/profile"
-                   component={UserProfile}>
-            </Route>
-
-            <Route path="/login"
-                   component={LoginPage}>
-            </Route>
-
-            <Route path="/register"
-                   component={RegisterPage}>
-            </Route>
-
-            <Route path="/admin"
-                   component={AdminManager}>
-            </Route>
-
-            <Route path="/home"
-                   component={App}>
-            </Route>
-
-            <Route path="/user/:userId/group/:groupId"
-                   component={GroupPage}>
-            </Route>
-        </div>
-    </Router>,
+    <Router><App/></Router>,
 
 
     document.getElementById('root')

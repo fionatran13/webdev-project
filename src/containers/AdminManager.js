@@ -9,9 +9,11 @@ export default class AdminManager extends React.Component {
             usernameInp: '',
             pwInp: '',
             emailInp: '',
+            phoneInp:'',
             picInp: '',
             userRoleInp: '',
-            users: []}
+            users: []
+        }
         this.userService = UserService.instance
         this.createUser = this.createUser.bind(this)
         this.setUsername = this.setUsername.bind(this)
@@ -41,6 +43,10 @@ export default class AdminManager extends React.Component {
         this.setState({emailInp: event.target.value})
     }
 
+    setPhone(event) {
+        this.setState({phoneInp: event.target.value})
+    }
+
     setPicURL(event) {
         this.setState({picInp: event.target.value})
     }
@@ -67,6 +73,7 @@ export default class AdminManager extends React.Component {
             const newUser = {username: this.state.usernameInp,
                 password: this.state.pwInp,
                 email: this.state.emailInp,
+                phone: this.state.phoneInp,
                 pictureUrl: this.state.picInp};
             this.userService.createUser(newUser, 0)
                 .then(response => this.fetchUsers())
@@ -75,6 +82,7 @@ export default class AdminManager extends React.Component {
             const newUser = {username: this.state.usernameInp,
                 password: this.state.pwInp,
                 email: this.state.emailInp,
+                phone: this.state.phoneInp,
                 pictureUrl: this.state.picInp};
             this.userService.createAdmin(newUser)
                 .then(response => this.fetchUsers())
@@ -88,15 +96,16 @@ export default class AdminManager extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <h1 id="title">User Admin</h1>
-                <table className="table">
+                <table className="table-responsive">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>Username</th>
                         <th>Password</th>
                         <th>Email</th>
+                        <th>Phone</th>
                         <th>Profile pic URL</th>
                     </tr>
                     <tr>
@@ -104,13 +113,14 @@ export default class AdminManager extends React.Component {
                         <th><input onChange={this.setUsername} className="form-control" placeholder="username" required/></th>
                         <th><input onChange={this.setPW} id="passwordFld" className="form-control" type="password" placeholder="***" required/></th>
                         <th><input onChange={this.setEmail} className="form-control" placeholder="johndoe@gmail.com"/></th>
+                        <th><input onChange={this.setPhone} className="form-control" placeholder="123-123-1234"/></th>
                         <th><input onChange={this.setPicURL} id="picFld" className="form-control" placeholder="../src/1400.jpg"/></th>
 
                         <th className="col-sm-9">
                             <select id="roleFld" className="form-control" onChange={this.setUserRole}>
                                 <option> </option>
                                 <option>User</option>
-                                {/*<option>Admin</option>*/}
+                                <option>Admin</option>
                             </select>
                         </th>
                         <th>

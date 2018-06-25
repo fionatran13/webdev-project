@@ -1,5 +1,5 @@
 import React from 'react';
-import GroupService from "../services/GroupService";
+import UserService from "../services/UserService";
 import ExpenseService from "../services/ExpenseService";
 import ExpensesListItem from "../components/ExpensesListItem";
 
@@ -7,12 +7,14 @@ import ExpensesListItem from "../components/ExpensesListItem";
 export default class ExpensesList extends React.Component {
     constructor(props) {
         super(props);
-        this.groupService = GroupService.instance;
+        this.userService = UserService.instance;
         this.expenseService = ExpenseService.instance;
         this.state = {
+            userId: 0,
             groupId: 0,
             expense: {id: 0, note: ''},
-            expenses: []
+            expenses: [],
+            anonymous: this.props.anonymous
         };
         this.setGroupId = this.setGroupId.bind(this);
         this.setNote = this.setNote.bind(this);
@@ -23,10 +25,20 @@ export default class ExpensesList extends React.Component {
 
     componentDidMount() {
         this.setGroupId(this.props.groupId);
+        this.setUserId(this.props.userId);
+        if(this.props.groupId != 0) {
+            this.findAllExpensesForGroup(this.props.groupId);
+        } else {
+            this.findAllExpensesForUser(this.props.userId);
+        }
     }
 
     setGroupId(groupId) {
         this.setState({groupId: groupId});
+    }
+
+    setUserId(userId) {
+        this.setState({userId: userId});
     }
 
     setNote(event) {
@@ -42,31 +54,38 @@ export default class ExpensesList extends React.Component {
     }
 
     findAllExpensesForGroup(groupId) {
-        this.groupService
+        this.expenseService
             .findAllExpensesForGroup(groupId)
             .then((expenses) => {
                 this.setExpenses(expenses)
             })
     }
 
+    findAllExpensesForUser(userId) {
+        this.userService
+            .getAllExpensesforUser(userId)
+            .then((expenses) => {
+                this.setExpenses(expenses)
+            })
+    }
     addExpense() {
-        //TODO: create Expense form
-        //reuse member search bar
+        window.location.href = '/group/' + this.state.groupId + '/expense'
     }
 
-    deleteExpense() {
+    deleteExpense(id) {
         this.expenseService
-            .deleteExpense(this.state.groupId, this.state.expense.id)
+            .deleteExpense(id)
             .then(() => {
-                this.findAllMembersForGroup(this.state.groupId)
+                this.findAllExpensesForGroup(this.state.groupId)
             });
     }
 
     renderExpenses() {
         let items = this.state.expenses.map((expense) => {
             return <ExpensesListItem groupId={this.state.groupId}
-                                    note={expense.note}
-                                    delete={this.deleteExpense}/>
+                                    info={expense}
+                                    delete={this.deleteExpense}
+                                    anonymous={this.state.anonymous}/>
         })
         return items;
     }
@@ -80,8 +99,9 @@ export default class ExpensesList extends React.Component {
                 </ul>
                     <button id="addBtn"
                             type="button"
-                            className="btn"
-                            onClick={this.addExpense}>
+                            className="btn btn-success"
+                            onClick={this.addExpense}
+                            hidden={this.state.anonymous}>
                         Add new expense
                     </button>
             </div>

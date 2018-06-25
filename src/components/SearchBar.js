@@ -11,13 +11,15 @@ export default class SearchBar extends React.Component {
             id:'',
             searchGroupName: '',
             list: [],
-            query: []
+            query: [],
+            anonymous: this.props.anonymous
         }
         this.titleChanged = this.titleChanged.bind(this)
     }
 
     componentDidMount() {
         this.setParams(this.props.id)
+        // this.setState({anonymous: this.props.anonymous})
         this.fetchList()
     }
 
@@ -38,6 +40,13 @@ export default class SearchBar extends React.Component {
                 .findAllGroupsForUser(this.state.id)
                 .then((list) => {
                     this.setState({list: list});
+                })
+        }
+        if(this.state.anonymous === true) {
+            this.groupService
+                .findAllGroups()
+                .then((res) => {
+                    this.setState({list: res});
                 })
         }
     }
@@ -63,7 +72,9 @@ export default class SearchBar extends React.Component {
             if (this.state.id != '') {
                 list = this.state.query.map(
                     function (item) {
-                        return <tr key={item.id}>{item.name}</tr>
+                        return <tr key={item.id}>
+                            <Link to={`/user/0/group/` + item.id}>{item.name}</Link>
+                            </tr>
                     }
                 )
             }
