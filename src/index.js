@@ -13,6 +13,7 @@ import FacebookService from "./services/FacebookService";
 import App from "./App";
 import AdminManager from "./containers/AdminManager";
 import ExpenseForm from "./components/ExpenseForm";
+import AnonymousSearchPage from "./containers/AnonymousSearchPage"
 
 
 export const TAM_ID = '2713186265573577'
@@ -49,6 +50,10 @@ ReactDOM.render(
 
             <Route path="/group/:groupId/expense"
                    component={ExpenseForm}>
+            </Route>
+
+            <Route path="/anonymous"
+                   component={AnonymousSearchPage}>
             </Route>
         </div>
     </Router>,

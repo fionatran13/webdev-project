@@ -11,12 +11,21 @@ export default class GroupPage extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {groupId: ''}
+        this.state = {
+            groupId: '',
+            isHidden: true
+        }
         this.payService = PaymentService.instance
     }
 
     componentDidMount() {
         this.setState({groupId: this.props.match.params.groupId})
+    }
+
+    toggleHidden () {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
     }
 
     renderExpenses() {
@@ -31,8 +40,9 @@ export default class GroupPage extends React.Component {
         }
     }
 
-    getDue() {
-    }
+    // getDue() {
+    //     this.renderDues()
+    // }
 
     render() {
         return (
@@ -48,8 +58,9 @@ export default class GroupPage extends React.Component {
                     </div>
                     <div className="col-4">
                         <button type="button" className="btn btn-warning"
-                                onClick={() => this.getDue()}>GET PAYMENT DUE</button>
-                        {this.renderDues()}
+                                onClick={this.toggleHidden.bind(this)}>GET PAYMENT DUE</button>
+                        {!this.state.isHidden && <PaymentDueList groupId={this.state.groupId}/>}
+                        {/*{this.renderDues()}*/}
                     </div>
                 </div>
             </div>

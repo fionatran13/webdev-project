@@ -18,6 +18,12 @@ export default class GroupService {
         return this[_singleton]
     }
 
+    findAllGroups() {
+        return fetch(LOCAL_URL + '/api/group')
+            .then(function(response) {
+                return response.json();
+            })
+    }
 
     findAllGroupsForUser(uid) {
         console.log(GROUP_USER_URL.replace('UID', uid))
@@ -28,6 +34,7 @@ export default class GroupService {
     }
 
     findAllGroupsByUserRole(userRole, uid) {
+        console.log(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
         return fetch(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
             .then(function (response) {
                 return response.json();
