@@ -1,2 +1,3 @@
-[submodule "react-facebook-login"]
+[submodule "./react-facebook-login"]
+    path = ./react-facebook-login
 	url = git://https://github.com/keppelen/react-facebook-login.git/
