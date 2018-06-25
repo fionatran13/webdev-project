@@ -13,13 +13,27 @@ export default class GroupPage extends React.Component {
         super(props)
         this.state = {
             groupId: '',
-            isHidden: true
+            isHidden: true,
+            anonymous: null
         }
         this.payService = PaymentService.instance
+        this.toggleAnonymous.bind(this);
+        //this.toggleAnonymous();
     }
 
     componentDidMount() {
         this.setState({groupId: this.props.match.params.groupId})
+        if(this.props.match.params.userId == 0) {
+            this.setState({anonymous: true})
+        } else {
+            this.setState({anonymous: false})
+        }
+    }
+
+    toggleAnonymous() {
+        if(this.props.match.params.userId == 0) {
+            this.setState({anonymous: true})
+        }
     }
 
     toggleHidden () {
@@ -28,9 +42,17 @@ export default class GroupPage extends React.Component {
         })
     }
 
+    renderMembers() {
+        if(this.state.groupId != '' && this.state.anonymous != null) {
+            return(<MembersList groupId={this.state.groupId}
+                                 anonymous={this.state.anonymous}/>)
+        }
+    }
+
     renderExpenses() {
-        if(this.state.groupId != '') {
-            return(<ExpensesList groupId={this.state.groupId}/>)
+        if(this.state.groupId != '' && this.state.anonymous != null) {
+            return(<ExpensesList groupId={this.state.groupId}
+                                anonymous={this.state.anonymous}/>)
         }
     }
 
@@ -51,7 +73,7 @@ export default class GroupPage extends React.Component {
                 {/*<MemberSearchBar/>*/}
                 <div className="row">
                     <div className="col-4">
-                        <MembersList/>
+                        {this.renderMembers()}
                     </div>
                     <div className="col-4">
                         {this.renderExpenses()}

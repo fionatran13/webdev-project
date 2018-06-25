@@ -11,7 +11,8 @@ export default class ExpensesListItem extends React.Component {
                Expense: {this.props.info.note} - {this.props.info.expenser.username} ({this.props.info.ammount})
                 <span className="float-right">
                     <button type="button" className="btn"
-                            onClick={() => this.props.delete(this.props.info.id)}>
+                            onClick={() => this.props.delete(this.props.info.id)}
+                            hidden={this.props.anonymous}>
                         <i className="fa fa-trash"></i>
                     </button>
                 </span>

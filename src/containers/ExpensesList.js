@@ -12,7 +12,8 @@ export default class ExpensesList extends React.Component {
         this.state = {
             groupId: 0,
             expense: {id: 0, note: ''},
-            expenses: []
+            expenses: [],
+            anonymous: this.props.anonymous
         };
         this.setGroupId = this.setGroupId.bind(this);
         this.setNote = this.setNote.bind(this);
@@ -66,7 +67,8 @@ export default class ExpensesList extends React.Component {
         let items = this.state.expenses.map((expense) => {
             return <ExpensesListItem groupId={this.state.groupId}
                                     info={expense}
-                                    delete={this.deleteExpense}/>
+                                    delete={this.deleteExpense}
+                                    anonymous={this.state.anonymous}/>
         })
         return items;
     }
@@ -81,7 +83,8 @@ export default class ExpensesList extends React.Component {
                     <button id="addBtn"
                             type="button"
                             className="btn btn-success"
-                            onClick={this.addExpense}>
+                            onClick={this.addExpense}
+                            hidden={this.state.anonymous}>
                         Add new expense
                     </button>
             </div>
