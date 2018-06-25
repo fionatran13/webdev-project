@@ -13,7 +13,8 @@ import FacebookService from "./services/FacebookService";
 import App from "./App";
 import AdminManager from "./containers/AdminManager";
 import ExpenseForm from "./components/ExpenseForm";
-import AnonymousSearchPage from "./containers/AnonymousSearchPage"
+import AnonymousSearchPage from "./containers/AnonymousSearchPage";
+import Homepage from "./containers/Homepage";
 
 
 
@@ -41,7 +42,7 @@ ReactDOM.render(
                    component={AdminManager}>
             </Route>
 
-            <Route path="/home"
+            <Route path="/app"
                    component={App}>
             </Route>
 
@@ -55,6 +56,10 @@ ReactDOM.render(
 
             <Route path="/anonymous"
                    component={AnonymousSearchPage}>
+            </Route>
+
+            <Route path="/home"
+                   component={Homepage}>
             </Route>
         </div>
     </Router>,
