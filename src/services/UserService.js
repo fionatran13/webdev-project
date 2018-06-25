@@ -83,4 +83,14 @@ export default class UserService {
             return response.json();
         })
     }
+
+    updateUser(userId, user) {
+        return fetch('http://localhost:8080/api/user/' + userId, {
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT'
+        })
+    }
 }
