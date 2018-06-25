@@ -68,22 +68,22 @@ export default class GroupService {
 
 
     findAllMembersForGroup(groupId) {
-        return fetch('http:localhost:8080/api/group/' + groupId + '/members')
+        return fetch('http://localhost:8080/api/group/' + groupId + '/members')
             .then(function (response) {
+                console.log(response)
                 return response.json();
             })
     }
 
     updateMembers(groupId, members) {
-        return fetch('http:localhost:8080/api/group/' + groupId + '/members',
+        return fetch('http://localhost:8080/api/group/' + groupId + '/members',
             {
                 body: JSON.stringify(members),
                 headers: {'Content-Type': 'application/json'},
                 method: 'PUT'
-            })
-            .then(function (response) {
-                return response.json();
-            })
+            }).then(function (response) {
+            return (response);
+        })
     }
 
     addMemberByIdToGroup(groupId, memberId) {

@@ -22,6 +22,7 @@ export default class MembersList extends React.Component {
 
     componentDidMount() {
         this.setGroupId(this.props.groupId);
+        this.findAllMembersForGroup(this.props.groupId);
         console.log(this.state.anonymous)
     }
 
