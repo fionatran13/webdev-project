@@ -4,6 +4,7 @@ import ExpensesList from './ExpensesList';
 import PaymentDueList from './PaymentDueList';
 import SearchBar from "../components/SearchBar";
 import MemberSearchBar from "../components/MemberSearchBar";
+import PaymentService from "../services/PaymentService";
 
 
 export default class GroupPage extends React.Component {
@@ -11,7 +12,7 @@ export default class GroupPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {groupId: ''}
-        this.payService = Pay
+        this.payService = PaymentService.instance
     }
 
     componentDidMount() {
@@ -25,7 +26,6 @@ export default class GroupPage extends React.Component {
     }
 
     getDue() {
-        console.log('hello')
     }
 
     render() {

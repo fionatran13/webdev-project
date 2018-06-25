@@ -22,7 +22,6 @@ export default class PaymentService {
     calculateCurrentDues(groupId) {
         return fetch('http://localhost:8080/api/group/' + groupId + '/due/calculate',
             {
-                body: JSON.stringify(expense),
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST'
             })
