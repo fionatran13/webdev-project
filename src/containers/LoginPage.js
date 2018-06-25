@@ -52,7 +52,7 @@ export default class LoginPage extends React.Component {
         if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
             this.setState({loggedIn: true})
             //return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
-             window.location.href = '/user/' + this.state.user.id + '/profile'
+             window.location.href = '/user/' + this.state.user.id + '/profile/edit'
         }
     }
 

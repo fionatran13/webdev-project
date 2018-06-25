@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import {TAM_ID} from "../index";
 import FBsugestBar from "./FBsugestBar";
 import UserService from "../services/UserService";
@@ -83,7 +84,9 @@ export default class MemberSearchBar extends React.Component {
                 list = this.state.query.map(
                     function (item) {
                         return (<tr key={item.id} onClick={() => self.selectMember(item.id)}>
-                            {item.username}</tr>)
+                            <Link to={"/user/" + item.id + '/profile/anonymous'}>
+                                [ID: {item.id}] Username: {item.username}
+                            </Link></tr>)
                     }
                 )
             }

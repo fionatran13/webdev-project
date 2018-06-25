@@ -22,14 +22,19 @@ export const TAM_ACCESS_TOKEN =
 
 
 export default class App extends React.Component {
-    // statet: AppState
+    state = {
+        loggedIn: false,
+        friends: {},
+        user: {}
+    };
+
     constructor(props) {
         super(props);
-        this.state = {
-            loggedIn: false,
-            user: {},
-            friends: {}
-        }
+        // this.state = {
+        //     loggedIn: false,
+        //     user: {},
+        //     friends: {}
+        // }
         // this.responseFacebook = this.responseFacebook.bind(this)
         this.setFriends = this.setFriends.bind(this)
     }
@@ -71,11 +76,11 @@ export default class App extends React.Component {
 
     render() {
         console.log('APP RENDER')
-        console.log(this.friendss)
+        console.log(this.state)
         return (
         <Switch>
             <div>
-                <Route path="/user/:userId/profile"
+                <Route path="/user/:userId/profile/:mode"
                        component={UserProfile}>
                 </Route>
 
@@ -111,7 +116,7 @@ export default class App extends React.Component {
                        component={Homepage}>
                 </Route>
 
-                <Route path="/user/:uid"
+                <Route path="/user/:uid/group/:groupId"
                        render={() => this.renderMemSearch()}>
                 </Route>
             </div>

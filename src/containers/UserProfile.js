@@ -14,7 +14,8 @@ export default class UserProfile extends React.Component {
             groupListAsMember: [],
             newUsername: '',
             newEmail: '',
-            newPhone:''
+            newPhone:'',
+            mode: ''
         }
         this.service = UserService.instance
         this.setUser = this.setUser.bind(this)
@@ -23,8 +24,13 @@ export default class UserProfile extends React.Component {
     }
 
     componentDidMount() {
+        this.setState({mode: this.props.match.params.mode})
         this.setState({userId: this.props.match.params.userId})
         this.setUser();
+    }
+
+    hideEdit() {
+        return this.state.mode != 'edit'
     }
 
     setUser() {
@@ -95,29 +101,32 @@ export default class UserProfile extends React.Component {
                     <div className="form-group">
                         <h3>Email</h3>
                         <input value={this.state.newEmail} className="form-control"
-                               onChange={this.setEmail}/>
+                               onChange={this.setEmail} readOnly={this.hideEdit()}/>
                     </div>
 
                     <div className="form-group">
                         <h3>Phone</h3>
                         <input value={this.state.newPhone} className="form-control"
-                               onChange={this.setPhone}/>
+                               onChange={this.setPhone} readOnly={this.hideEdit()}/>
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-block btn-info"
+                        <button hidden={this.hideEdit()} className="btn btn-block btn-info"
                                 onClick={() => this.updateUser()}>Save Changes
                         </button>
                     </div>
                 </div>
-                <br/>
-                {this.renderSearchBar()}
-                <br/>
-                {this.renderGroupLists()}
-                <br/>
-                {this.renderExpenses()}
-                <br/>
-                {this.renderDues()}
+                <div hidden={this.hideEdit()}>
+                    <br/>
+                    {this.renderSearchBar()}
+                    <br/>
+                    {this.renderGroupLists()}
+                    <br/>
+                    {this.renderExpenses()}
+                    <br/>
+                    {this.renderDues()}
+                </div>
+
             </div>
         )
     }
