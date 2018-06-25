@@ -169,7 +169,8 @@ export default class MemberSearchBar extends React.Component {
                                    placeholder="Find by username"/>
                         </th>
                         <th>
-                            <button className="btn"
+                            <button hidden={this.props.mode !== undefined}
+                                    className="btn"
                                     data-toggle="modal"
                                     data-target="#exampleModal">
                                 <i className="fa fa-plus"></i>

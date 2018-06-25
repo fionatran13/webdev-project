@@ -11,9 +11,13 @@ export default class FBFriend extends React.Component {
         this.setState({friend: this.props.friend})
     }
 
+    viewProfile(id) {
+        window.location.href = '/user/' + id + '/profile/view'
+    }
+
     render() {
         return (
-            <div className="card">
+            <div className="card" onClick={() => this.viewProfile(this.props.friend.id)}>
                 <img className="card-img-top"
                      src={fb_logo}
                      alt="Profile picture">
