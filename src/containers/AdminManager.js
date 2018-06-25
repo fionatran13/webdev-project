@@ -13,7 +13,8 @@ export default class AdminManager extends React.Component {
             phoneInp:'',
             picInp: '',
             userRoleInp: '',
-            users: []
+            users: [],
+            admins:[]
         }
         this.userService = UserService.instance
         this.createUser = this.createUser.bind(this)
@@ -26,10 +27,15 @@ export default class AdminManager extends React.Component {
 
     componentDidMount() {
         this.fetchUsers();
+        this.fetchAdmins();
     }
 
     fetchUsers() {
         this.userService.findAllUsers().then(response => this.setState({users: response}))
+    }
+
+    fetchAdmins() {
+        this.userService.findAllAdmins().then(response => this.setState({admins: response}))
     }
 
     setUsername(event) {
@@ -69,6 +75,15 @@ export default class AdminManager extends React.Component {
         )
     }
 
+    renderAdmins() {
+       let list =  this.state.admins.map(
+            function (item) {
+                return (<UserRow key={item.id} info={item}/>)
+            }
+        )
+        return (list)
+    }
+
     renderGroups() {
         return(<GroupList userId="0" userRole="systemAdmin"/>)
     }
@@ -90,7 +105,7 @@ export default class AdminManager extends React.Component {
                 phone: this.state.phoneInp,
                 pictureUrl: this.state.picInp};
             this.userService.createAdmin(newUser)
-                .then(response => this.fetchUsers())
+                .then(response => this.fetchAdmins())
         }
         else {
             alert('Choose user role')
@@ -128,9 +143,8 @@ export default class AdminManager extends React.Component {
 
                         <th>
                             <select id="roleFld" className="form-control" onChange={this.setUserRole}>
-                                <option> </option>
-                                <option>User</option>
-                                <option>Admin</option>
+                                <option value="User" selected>User</option>
+                                <option value="Admin">Admin</option>
                             </select>
                         </th>
                         <th>
@@ -142,6 +156,7 @@ export default class AdminManager extends React.Component {
                     </thead>
                     <tbody>
                     {this.renderUsers()}
+                    {this.renderAdmins()}
                     </tbody>
                     <tfoot></tfoot>
                 </table>
