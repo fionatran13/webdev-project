@@ -28,20 +28,22 @@ export default class UserRow extends React.Component {
                 <td className="username">{this.state.info.username}</td>
                 <td className="password">{this.state.info.password}</td>
                 <td className="email">{this.state.info.email}</td>
+                <td className="phone">{this.state.info.phone}</td>
                 <td className="role">{this.state.pictureURL}</td>
 
-                <th>
+                <td>
                     <button className="deleteBtn btn btn-danger">
                         <i className="fas fa-trash"></i>
                         Delete
                     </button>
-                </th>
-                <th>
-                    <button className="editBtn btn btn-danger">
+                </td>
+                <td>
+                    <button className="editBtn btn btn-danger"
+                            onClick={() => window.location.href = '/user/' + this.props.info.id + '/profile'}>
                         <i className="fas fa-user-edit"></i>
                         Edit
                     </button>
-                </th>
+                </td>
 
             </tr>
 
