@@ -24,45 +24,7 @@ export const TAM_ACCESS_TOKEN =
 
 
 ReactDOM.render(
-    <Router>
-        <div>
-            <Route path="/user/:userId/profile"
-                   component={UserProfile}>
-            </Route>
-
-            <Route path="/login"
-                   component={LoginPage}>
-            </Route>
-
-            <Route path="/register"
-                   component={RegisterPage}>
-            </Route>
-
-            <Route path="/admin"
-                   component={AdminManager}>
-            </Route>
-
-            <Route path="/app"
-                   component={App}>
-            </Route>
-
-            <Route path="/user/:userId/group/:groupId"
-                   component={GroupPage}>
-            </Route>
-
-            <Route path="/group/:groupId/expense"
-                   component={ExpenseForm}>
-            </Route>
-
-            <Route path="/anonymous"
-                   component={AnonymousSearchPage}>
-            </Route>
-
-            <Route path="/home"
-                   component={Homepage}>
-            </Route>
-        </div>
-    </Router>,
+    <Router><App/></Router>,
 
 
     document.getElementById('root')
