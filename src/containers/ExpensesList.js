@@ -46,7 +46,6 @@ export default class ExpensesList extends React.Component {
         this.expenseService
             .findAllExpensesForGroup(groupId)
             .then((expenses) => {
-                console.log(expenses)
                 this.setExpenses(expenses)
             })
     }

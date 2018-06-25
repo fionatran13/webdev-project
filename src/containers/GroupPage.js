@@ -11,6 +11,7 @@ export default class GroupPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {groupId: ''}
+        this.payService = Pay
     }
 
     componentDidMount() {
@@ -22,6 +23,11 @@ export default class GroupPage extends React.Component {
             return(<ExpensesList groupId={this.state.groupId}/>)
         }
     }
+
+    getDue() {
+        console.log('hello')
+    }
+
     render() {
         return (
             <div>
@@ -35,6 +41,8 @@ export default class GroupPage extends React.Component {
                         {this.renderExpenses()}
                     </div>
                     <div className="col-4">
+                        <button type="button" className="btn btn-warning"
+                                onClick={() => this.getDue()}>GET PAYMENT DUE</button>
                         <PaymentDueList/>
                     </div>
                 </div>
