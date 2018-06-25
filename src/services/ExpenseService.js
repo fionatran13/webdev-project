@@ -1,7 +1,7 @@
-import {LOCAL_URL} from "./UserService";
-const GROUP_API = LOCAL_URL + '/api/group'
-const USER_API = LOCAL_URL + '/api/user'
-const EXPENSE_API = LOCAL_URL + '/api/expense'
+import {LOCAL_URL, REMOTE_URL} from "./UserService";
+const GROUP_API = REMOTE_URL + '/api/group'
+const USER_API = REMOTE_URL + '/api/user'
+const EXPENSE_API = REMOTE_URL + '/api/expense'
 
 
 let _singleton = Symbol();

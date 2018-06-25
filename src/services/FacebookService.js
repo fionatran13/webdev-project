@@ -14,16 +14,16 @@ export default class FacebookService {
         return this[_singleton]
     }
 
-    getFriends(id) {
-        return FB.api(
-            '/' + id + '/friends',
-            'GET',
-            {},
-            function(response) {
-                // Insert your code here
-                console.log(response);
-            }
-        );
-    }
+    // getFriends(id) {
+    //     return FB.api(
+    //         '/' + id + '/friends',
+    //         'GET',
+    //         {},
+    //         function(response) {
+    //             // Insert your code here
+    //             console.log(response);
+    //         }
+    //     );
+    // }
 }
 

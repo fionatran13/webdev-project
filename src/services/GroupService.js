@@ -1,9 +1,9 @@
 let _singleton = Symbol();
 const REMOTE_URL = 'https://split-the-bill-server.herokuapp.com'
 const LOCAL_URL = 'http://localhost:8080'
-export const GROUP_API_URL = LOCAL_URL + '/api/group';
-const GROUP_USER_URL = LOCAL_URL + '/api/user/UID/group'
-const GROUP_USERROLE_URL = LOCAL_URL + '/api/user/UID/USER_ROLE/group'
+export const GROUP_API_URL = REMOTE_URL + '/api/group';
+const GROUP_USER_URL = REMOTE_URL + '/api/user/UID/group'
+const GROUP_USERROLE_URL = REMOTE_URL + '/api/user/UID/USER_ROLE/group'
 
 
 export default class GroupService {
