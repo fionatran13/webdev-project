@@ -24,7 +24,9 @@ export const TAM_ACCESS_TOKEN =
 
 
 ReactDOM.render(
-    <Router><App/></Router>,
+    <Router>
+        <App/>
+    </Router>,
 
 
     document.getElementById('root')

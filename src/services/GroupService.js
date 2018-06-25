@@ -1,6 +1,6 @@
 let _singleton = Symbol();
-export const REMOTE_URL = 'https://split-the-bill-server.herokuapp.com'
-export const LOCAL_URL = 'http://localhost:8080'
+const REMOTE_URL = 'https://split-the-bill-server.herokuapp.com'
+const LOCAL_URL = 'http://localhost:8080'
 const GROUP_API_URL = LOCAL_URL + '/api/group';
 const GROUP_USER_URL = LOCAL_URL + '/api/user/UID/group'
 const GROUP_USERROLE_URL = LOCAL_URL + '/api/user/UID/USER_ROLE/group'

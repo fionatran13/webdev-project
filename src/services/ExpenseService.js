@@ -1,3 +1,9 @@
+import {LOCAL_URL} from "./UserService";
+const GROUP_API = LOCAL_URL + '/api/group'
+const USER_API = LOCAL_URL + '/api/user'
+const EXPENSE_API = LOCAL_URL + '/api/expense'
+
+
 let _singleton = Symbol();
 
 export default class ExpenseService {
@@ -13,14 +19,14 @@ export default class ExpenseService {
     }
 
     findAllExpensesForGroup(groupId) {
-        return fetch('http://localhost:8080/api/group/' + groupId + '/expense')
+        return fetch(GROUP_API + groupId + '/expense')
             .then(function (response) {
                 return response.json();
             })
     }
 
     addExpenseToGroup(groupId, userId, expense) {
-        return fetch('http://localhost:8080/api/user/' + userId + '/group/' + groupId + '/expense',
+        return fetch(USER_API + userId + '/group/' + groupId + '/expense',
             {
                 body: JSON.stringify(expense),
                 headers: {'Content-Type': 'application/json'},
@@ -32,8 +38,7 @@ export default class ExpenseService {
     }
 
     deleteExpense(expenseId) {
-        console.log('http://localhost:8080/api/expense/' + expenseId)
-        return fetch('http://localhost:8080/api/expense/' + expenseId,
+        return fetch(EXPENSE_API + expenseId,
             {
                 method: 'delete'
             })

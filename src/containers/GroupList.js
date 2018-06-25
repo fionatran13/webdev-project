@@ -26,13 +26,11 @@ export default class GroupList extends React.Component {
     }
 
     setParams(params) {
-        console.log(params)
         this.setState({userId: params.userId, userRole: params.userRole})
     }
 
 
     renderGroupList() {
-        console.log(this.state)
         let list = null;
         var self = this;
         if (this.state.userId != '' && this.state.userRole != '') {

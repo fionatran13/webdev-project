@@ -69,7 +69,7 @@ export default class GroupPage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Group Page</h1>
+                <h1>Group {this.state.groupId}</h1>
                 {/*<MemberSearchBar/>*/}
                 <div className="row">
                     <div className="col-4">
