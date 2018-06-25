@@ -23,7 +23,6 @@ export default class MembersList extends React.Component {
     componentDidMount() {
         this.setGroupId(this.props.groupId);
         this.findAllMembersForGroup(this.props.groupId);
-        console.log(this.state.anonymous)
     }
 
     setGroupId(groupId) {
@@ -61,7 +60,7 @@ export default class MembersList extends React.Component {
     }
 
     deleteMember(username) {
-        for (var i=0; i < this.state.members.length; i++) {
+        for (var i = 0; i < this.state.members.length; i++) {
             if(this.state.members[i].username === username) {
                 this.state.members.splice(i, 1)
             }
@@ -90,24 +89,24 @@ export default class MembersList extends React.Component {
                 <ul className="list-group">
                     {this.renderMembers()}
                 </ul>
-                <form>
-                    <div className="input-group">
-                        <input className="form-control mr-sm-1"
-                               placeholder="New member"
-                               value={this.state.member.username}
-                               onChange={this.setUsername}
-                               hidden={this.state.anonymous}/>
-                        <span className="input-group-btn">
-                    <button id="addBtn"
-                            type="button"
-                            className="btn"
-                            onClick={this.addMember}
-                            hidden={this.state.anonymous}>
-                        <i className="fa fa-plus"></i>
-                    </button>
-                    </span>
-                    </div>
-                </form>
+                {/*<form>*/}
+                    {/*<div className="input-group">*/}
+                        {/*<input className="form-control mr-sm-1"*/}
+                               {/*placeholder="New member"*/}
+                               {/*value={this.state.member.username}*/}
+                               {/*onChange={this.setUsername}*/}
+                               {/*hidden={this.state.anonymous}/>*/}
+                        {/*<span className="input-group-btn">*/}
+                    {/*<button id="addBtn"*/}
+                            {/*type="button"*/}
+                            {/*className="btn"*/}
+                            {/*onClick={this.addMember}*/}
+                            {/*hidden={this.state.anonymous}>*/}
+                        {/*<i className="fa fa-plus"></i>*/}
+                    {/*</button>*/}
+                    {/*</span>*/}
+                    {/*</div>*/}
+                {/*</form>*/}
             </div>
         )
     }

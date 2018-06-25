@@ -55,7 +55,7 @@ export default class MemberSearchBar extends React.Component {
         if(response.status == 200) {
             alert('Refresh group page to see updates')
         } else {
-            alert('Cannot add')
+            alert('Member already in group!')
         }
     }
 

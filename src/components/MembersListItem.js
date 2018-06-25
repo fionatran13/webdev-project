@@ -6,7 +6,6 @@ export default class MembersListItem extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <li className="list-group-item">
                 {this.props.username}

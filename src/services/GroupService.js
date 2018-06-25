@@ -68,12 +68,12 @@ export default class GroupService {
     findAllMembersForGroup(groupId) {
         return fetch(GROUP_API_URL + '/' + groupId + '/members')
             .then(function (response) {
-                console.log(response)
                 return response.json();
             })
     }
 
     updateMembers(groupId, members) {
+        console.log(members)
         return fetch(GROUP_API_URL + '/' + groupId + '/members',
             {
                 body: JSON.stringify(members),
