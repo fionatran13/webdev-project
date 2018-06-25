@@ -20,6 +20,7 @@ export default class GroupList extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props.userRole)
         this.setState({userId: this.props.userId, userRole: this.props.userRole})
         // this.setParams(this.props)
         this.fetchList()
@@ -50,7 +51,12 @@ export default class GroupList extends React.Component {
     }
 
     renderInstruction() {
-        if(this.state.userRole == 'admin') {
+        if(this.state.userRole == 'systemAdmin') {
+            return <div className="alert alert-success" role="alert">
+                <strong>You can view group information, create and delete groups</strong>
+            </div>
+        }
+        else if(this.state.userRole == 'admin') {
             return (<div className="alert alert-success" role="alert">
                 <strong>Create group as admin</strong>
             </div>)
@@ -62,12 +68,21 @@ export default class GroupList extends React.Component {
 
     }
 
+    renderTitle() {
+        if(this.state.userRole == 'systemAdmin') {
+            return <div>All Groups in Database</div>
+        }
+        else {
+            return <div>Groups you are in as {this.state.userRole}</div>
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className="container">
                     <h2 className="text-center text-uppercase text-secondary mb-0">
-                        Groups you are in as {this.state.userRole}
+                        {this.renderTitle()}
                     </h2>
                 </div>
                 {this.renderInstruction()}
@@ -94,11 +109,19 @@ export default class GroupList extends React.Component {
     }
 
     fetchList() {
-        this.groupService
-            .findAllGroupsByUserRole(this.props.userRole, this.props.userId)
-            .then((list) => {
-                this.setState({list: list});
-            })
+        if(this.props.userRole == 'systemAdmin') {
+            this.groupService
+                .findAllGroups()
+                .then((list) => {
+                    this.setState({list: list});
+                })
+        } else {
+            this.groupService
+                .findAllGroupsByUserRole(this.props.userRole, this.props.userId)
+                .then((list) => {
+                    this.setState({list: list});
+                })
+        }
     }
 
     titleChanged(event) {

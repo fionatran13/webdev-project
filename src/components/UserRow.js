@@ -15,7 +15,6 @@ export default class UserRow extends React.Component {
     }
 
     setParam(props) {
-        console.log(props)
         var param = props.info
         this.setState({id: param.id, info: param})
     }

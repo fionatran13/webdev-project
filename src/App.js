@@ -67,10 +67,10 @@ export default class App extends React.Component {
         this.setState({friends: friends})
     }
 
-    renderMemSearch() {
-        console.log(this.state)
+    renderMemSearch(gid) {
+        console.log(gid)
         if(this.state.user != {} && this.state.friends != {})
-        return (<MemberSearchBar user={this.state.user}
+        return (<MemberSearchBar gid={gid} user={this.state.user}
                                  friends={this.state.friends.data}/>)
     }
 
@@ -100,6 +100,11 @@ export default class App extends React.Component {
                        component={App}>
                 </Route>
 
+                <Route path="/user/:uid/group/:groupId"
+                    // component={MemberSearchBar} something={this.state.friends}>
+                       render={(props) => this.renderMemSearch(props.match.params.groupId)}>
+                </Route>
+
                 <Route path="/user/:userId/group/:groupId"
                        component={GroupPage}>
                 </Route>
@@ -114,10 +119,6 @@ export default class App extends React.Component {
 
                 <Route path="/home"
                        component={Homepage}>
-                </Route>
-
-                <Route path="/user/:uid/group/:groupId"
-                       render={() => this.renderMemSearch()}>
                 </Route>
             </div>
         </Switch>

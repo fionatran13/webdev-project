@@ -1,6 +1,7 @@
 import React from 'react'
 import UserService from "../services/UserService";
 import UserRow from "../components/UserRow";
+import GroupList from "./GroupList";
 
 export default class AdminManager extends React.Component {
     constructor(props) {
@@ -68,6 +69,10 @@ export default class AdminManager extends React.Component {
         )
     }
 
+    renderGroups() {
+        return(<GroupList userId="0" userRole="systemAdmin"/>)
+    }
+
     createUser() {
         if(this.state.userRoleInp == 'User') {
             const newUser = {username: this.state.usernameInp,
@@ -97,8 +102,13 @@ export default class AdminManager extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1 id="title">User Admin</h1>
-                <table className="table-responsive">
+                <h1 id="title">SYSTEM ADMINISTRATION</h1>
+                <table className="table-sm table-responsive">
+                    <div className="container">
+                        <h2 className="text-center text-uppercase text-secondary mb-0">
+                            ALL USERS
+                        </h2>
+                    </div>
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -116,7 +126,7 @@ export default class AdminManager extends React.Component {
                         <th><input onChange={this.setPhone} className="form-control" placeholder="123-123-1234"/></th>
                         <th><input onChange={this.setPicURL} id="picFld" className="form-control" placeholder="../src/1400.jpg"/></th>
 
-                        <th className="col-sm-9">
+                        <th>
                             <select id="roleFld" className="form-control" onChange={this.setUserRole}>
                                 <option> </option>
                                 <option>User</option>
@@ -135,6 +145,8 @@ export default class AdminManager extends React.Component {
                     </tbody>
                     <tfoot></tfoot>
                 </table>
+                {this.renderGroups()}
+
             </div>
         )
     }

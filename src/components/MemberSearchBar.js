@@ -10,10 +10,10 @@ export default class MemberSearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            gid: '2',
+            gid: '',
             friends: {},
             id: '',
-            selectedMId: '2',
+            selectedMId: '',
             searchInp: '',
             list: [],
             query: []
@@ -25,13 +25,12 @@ export default class MemberSearchBar extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         this.setParams(this.props)
         this.fetchList()
     }
 
     setParams(props) {
-        this.setState({id: props.user.id, friends: props.friends})
+        this.setState({id: props.user.id, friends: props.friends, gid: props.gid})
     }
 
     selectMember(id) {
@@ -42,9 +41,13 @@ export default class MemberSearchBar extends React.Component {
     }
 
     addMemberToGroup() {
-        alert('adding ' + this.state.selectedMId + ' to group ' + this.state.gid)
-        this.groupService
-            .addMemberByIdToGroup(this.state.gid, this.state.selectedMId)
+        if(this.state.selectedMId == '') {
+            alert('No user selected!')
+        } else {
+            alert('adding ' + this.state.selectedMId + ' to group ' + this.state.gid)
+            this.groupService
+                .addMemberByIdToGroup(this.state.gid, this.state.selectedMId)
+        }
     }
 
     titleChanged(event) {
@@ -83,10 +86,15 @@ export default class MemberSearchBar extends React.Component {
             if (this.state.id != '') {
                 list = this.state.query.map(
                     function (item) {
-                        return (<tr key={item.id} onClick={() => self.selectMember(item.id)}>
+                        return (
+                            <div>
+                            <tr key={item.id} onClick={() => self.selectMember(item.id)}>
                             <Link to={"/user/" + item.id + '/profile/anonymous'}>
                                 [ID: {item.id}] Username: {item.username}
-                            </Link></tr>)
+                            </Link>
+                                <button>Select</button>
+                            </tr>
+                            </div>)
                     }
                 )
             }
@@ -102,44 +110,81 @@ export default class MemberSearchBar extends React.Component {
         }
     }
 
+    createDialog() {
+        return(<div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        Adding user {this.state.selectedMId} to group {this.state.gid}
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary"
+                                data-dismiss="modal">Cancel</button>
+                        <button type="button" className="btn btn-primary"
+                                data-dismiss="modal"
+                                onClick={() => this.addMemberToGroup()}>
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>)
+    }
+
     render() {
         return (
-            <table className="table">
-                <thead>
-                <tr>
-                    <th>
-                        <button className="btn">
-                            <i className="fa fa-search"></i>
-                        </button>
-                    </th>
-                    <th><input onChange={this.titleChanged}
-                               value={this.state.searchInp}
-                               className="form-control" id="titleFld"
-                               placeholder="Find by username"/>
-                    </th>
-                    <th>
-                        <button className="btn"
-                                onClick={() => this.addMemberToGroup()}>
-                            <i className="fa fa-plus"></i>
-                        </button>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th></th>
-                    <th>
-                        {this.suggestFacebookFriends()}
-                    </th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th>
-                        {this.renderQuery()}
-                    </th>
-                </tr>
-                </tbody>
-            </table>
+            <div>
+                {this.createDialog()}
+
+
+                <table className="table">
+
+
+                    <thead>
+                    <tr>
+                        <th>
+                            <button className="btn">
+                                <i className="fa fa-search"></i>
+                            </button>
+                        </th>
+                        <th><input onChange={this.titleChanged}
+                                   value={this.state.searchInp}
+                                   className="form-control" id="titleFld"
+                                   placeholder="Find by username"/>
+                        </th>
+                        <th>
+                            <button className="btn"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal">
+                                <i className="fa fa-plus"></i>
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th></th>
+                        <th>
+                            {this.suggestFacebookFriends()}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            {this.renderQuery()}
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
 
         )
     }
