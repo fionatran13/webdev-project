@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login';
 import {Link} from 'react-router-dom';
 import UserService from "../services/UserService";
 import MemberSearchBar from "../components/MemberSearchBar";
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import GroupPage from "./GroupPage";
 
 
@@ -52,7 +52,13 @@ export default class LoginPage extends React.Component {
         if (!this.state.loggedIn && this.state.user != {} && this.state.user.id != undefined) {
             this.setState({loggedIn: true})
             //return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
-             window.location.href = '/user/' + this.state.user.id + '/profile/edit'
+            //console.log(this.service.findAdminById(this.state.user.id));
+            var admin = this.service.findAdminById(this.state.user.id);
+            if(admin !== null) {
+                window.location.href = '/user/' + this.state.user.id + '/profile/edit'
+            } else {
+                window.location.href = '/admin'
+            }
         }
     }
 
@@ -112,18 +118,25 @@ export default class LoginPage extends React.Component {
     }
 
     handleResponse(response) {
-        console.log(response)
         if (response.status !== 500) {
-            return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
+            window.location.href = '/admin'
         } else {
             window.alert('Invalid credentials')
         }
     }
 
     login() {
+        var self = this;
         var user = {username: this.state.username, password: this.state.password};
         this.service.login(user)
-            .then((response) => this.handleResponse(response))
+            .then((re) => {
+                if(re.status !== 500) {
+                    return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
+                } else {
+                    self.service.loginAdmin(user)
+                        .then((res) => self.handleResponse(res))
+                }
+            })
     }
 
     navigateToProfile() {
@@ -132,7 +145,7 @@ export default class LoginPage extends React.Component {
 
     render() {
         return (
-            <Router>
+            <Switch>
                 <div>
                 <div className="container-fluid">
                     {/*<Route path="/user/:userId/group/:groupId"*/}
@@ -182,7 +195,7 @@ export default class LoginPage extends React.Component {
                     </div>
                 </div>
                 </div>
-            </Router>
+            </Switch>
         )
     }
 }

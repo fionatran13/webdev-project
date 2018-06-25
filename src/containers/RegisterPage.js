@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import UserService from '../services/UserService'
 
 export default class RegisterPage extends React.Component {
@@ -49,6 +50,7 @@ export default class RegisterPage extends React.Component {
 
     render() {
         return (
+            <Switch>
             <div className="container-fluid">
                 <h2>Register for a new account</h2>
 
@@ -87,6 +89,7 @@ export default class RegisterPage extends React.Component {
                     <Link to={`/login`}>here.</Link>
                 </div>
             </div>
+            </Switch>
         )
     }
 }
