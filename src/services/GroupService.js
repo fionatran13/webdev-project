@@ -1,7 +1,7 @@
 let _singleton = Symbol();
 const REMOTE_URL = 'https://split-the-bill-server.herokuapp.com'
 const LOCAL_URL = 'http://localhost:8080'
-const GROUP_API_URL = LOCAL_URL + '/api/group';
+export const GROUP_API_URL = LOCAL_URL + '/api/group';
 const GROUP_USER_URL = LOCAL_URL + '/api/user/UID/group'
 const GROUP_USERROLE_URL = LOCAL_URL + '/api/user/UID/USER_ROLE/group'
 
@@ -19,14 +19,13 @@ export default class GroupService {
     }
 
     findAllGroups() {
-        return fetch(LOCAL_URL + '/api/group')
+        return fetch(GROUP_API_URL)
             .then(function(response) {
                 return response.json();
             })
     }
 
     findAllGroupsForUser(uid) {
-        console.log(GROUP_USER_URL.replace('UID', uid))
         return fetch(GROUP_USER_URL.replace('UID', uid))
             .then(function (response) {
                 return response.json();
@@ -34,7 +33,6 @@ export default class GroupService {
     }
 
     findAllGroupsByUserRole(userRole, uid) {
-        console.log(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
         return fetch(GROUP_USERROLE_URL.replace('UID', uid).replace('USER_ROLE', userRole))
             .then(function (response) {
                 return response.json();
@@ -68,7 +66,7 @@ export default class GroupService {
 
 
     findAllMembersForGroup(groupId) {
-        return fetch('http://localhost:8080/api/group/' + groupId + '/members')
+        return fetch(GROUP_API_URL + groupId + '/members')
             .then(function (response) {
                 console.log(response)
                 return response.json();
@@ -76,7 +74,7 @@ export default class GroupService {
     }
 
     updateMembers(groupId, members) {
-        return fetch('http://localhost:8080/api/group/' + groupId + '/members',
+        return fetch(GROUP_API_URL + groupId + '/members',
             {
                 body: JSON.stringify(members),
                 headers: {'Content-Type': 'application/json'},
@@ -88,7 +86,6 @@ export default class GroupService {
 
     addMemberByIdToGroup(groupId, memberId) {
         const url = GROUP_API_URL +  '/' + groupId + '/newMember/' + memberId
-        console.log(url)
         return fetch(url,
             {
                 headers: {'Content-Type': 'application/json'},

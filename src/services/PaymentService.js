@@ -1,3 +1,5 @@
+import {GROUP_API_URL} from "./GroupService";
+
 let _singleton = Symbol();
 
 export default class PaymentService {
@@ -13,14 +15,14 @@ export default class PaymentService {
     }
 
     getAllDueByGroup(groupId) {
-        return fetch('http://localhost:8080/api/group/' + groupId + '/due')
+        return fetch(GROUP_API_URL + '/' + groupId + '/due')
             .then(function (response) {
                 return response.json();
             })
     }
 
     calculateCurrentDues(groupId) {
-        return fetch('http://localhost:8080/api/group/' + groupId + '/due/calculate',
+        return fetch(GROUP_API_URL + '/' + groupId + '/due/calculate',
             {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST'

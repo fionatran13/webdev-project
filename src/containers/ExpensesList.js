@@ -82,7 +82,7 @@ export default class ExpensesList extends React.Component {
 
     renderExpenses() {
         let items = this.state.expenses.map((expense) => {
-            return <ExpensesListItem groupId={this.state.groupId}
+            return <ExpensesListItem key={expense.id} groupId={this.state.groupId}
                                     info={expense}
                                     delete={this.deleteExpense}
                                     anonymous={this.state.anonymous}/>

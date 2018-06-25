@@ -4,6 +4,10 @@ export const LOCAL_URL = 'http://localhost:8080'
 const USER_API = LOCAL_URL + '/api/user';
 const ADMIN_API = LOCAL_URL + '/api/admin';
 const UID_URL = LOCAL_URL + '/api/user/UID'
+const FBUSER_URL = LOCAL_URL + '/api/fbuser'
+const USERNAME_URL = LOCAL_URL + '/api/username'
+const LOGIN_URL = LOCAL_URL + '/api/login'
+
 
 
 export default class UserService {
@@ -47,7 +51,7 @@ export default class UserService {
     }
 
     createUser(user, fbId) {
-        return fetch('http://localhost:8080/api/user/' + fbId, {
+        return fetch(USER_API + fbId, {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
@@ -59,21 +63,21 @@ export default class UserService {
     }
 
     findFBUserById(fbId) {
-        return fetch('http://localhost:8080/api/fbuser/' + fbId)
+        return fetch(FBUSER_URL + '/' + fbId)
             .then(function(response) {
                 return response.json();
             })
     }
 
     findUserByUsername(username) {
-        return fetch('http://localhost:8080/api/username/' + username)
+        return fetch(USERNAME_URL + username)
             .then(function(response) {
                 return response.json();
             })
     }
 
     login(user) {
-        return fetch('http://localhost:8080/api/login', {
+        return fetch(LOGIN_URL, {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
@@ -85,7 +89,7 @@ export default class UserService {
     }
 
     updateUser(userId, user) {
-        return fetch('http://localhost:8080/api/user/' + userId, {
+        return fetch(USER_API + '/' + userId, {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
@@ -95,14 +99,14 @@ export default class UserService {
     }
 
     getAllExpensesforUser(userId) {
-        return fetch('http://localhost:8080/api/user/' + userId + '/expenses')
+        return fetch(USER_API + '/' + userId + '/expenses')
             .then(function(response) {
                 return response.json();
             });
     }
 
     getAllDuesforUser(userId) {
-        return fetch('http://localhost:8080/api/user/' + userId + '/due')
+        return fetch(USER_API + '/' + userId + '/due')
             .then(function(response) {
                 return response.json();
             });

@@ -60,7 +60,7 @@ export default class PaymentDueList extends React.Component {
 
     renderPayments() {
         let items = this.state.payments.map((payment) => {
-            return <PaymentDueListItem groupId={this.state.groupId}
+            return <PaymentDueListItem key={payment.id} groupId={this.state.groupId}
                                      info={payment}/>
         })
         return items;
