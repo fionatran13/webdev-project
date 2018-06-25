@@ -8,10 +8,10 @@ export default class ExpensesListItem extends React.Component {
     render() {
         return (
             <li className="list-group-item">
-                {this.props.note}
+               Expense: {this.props.info.note} - {this.props.info.expenser.username} ({this.props.info.ammount})
                 <span className="float-right">
                     <button type="button" className="btn"
-                            onClick={() => this.props.delete(this.props.expense.id)}>
+                            onClick={() => this.props.delete(this.props.info.id)}>
                         <i className="fa fa-trash"></i>
                     </button>
                 </span>

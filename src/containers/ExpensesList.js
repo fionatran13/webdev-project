@@ -23,6 +23,7 @@ export default class ExpensesList extends React.Component {
 
     componentDidMount() {
         this.setGroupId(this.props.groupId);
+        this.findAllExpensesForGroup(this.props.groupId);
     }
 
     setGroupId(groupId) {
@@ -42,30 +43,30 @@ export default class ExpensesList extends React.Component {
     }
 
     findAllExpensesForGroup(groupId) {
-        this.groupService
+        this.expenseService
             .findAllExpensesForGroup(groupId)
             .then((expenses) => {
+                console.log(expenses)
                 this.setExpenses(expenses)
             })
     }
 
     addExpense() {
-        console.log(this.state.groupId)
         window.location.href = '/group/' + this.state.groupId + '/expense'
     }
 
-    deleteExpense() {
+    deleteExpense(id) {
         this.expenseService
-            .deleteExpense(this.state.groupId, this.state.expense.id)
+            .deleteExpense(id)
             .then(() => {
-                this.findAllMembersForGroup(this.state.groupId)
+                this.findAllExpensesForGroup(this.state.groupId)
             });
     }
 
     renderExpenses() {
         let items = this.state.expenses.map((expense) => {
             return <ExpensesListItem groupId={this.state.groupId}
-                                    note={expense.note}
+                                    info={expense}
                                     delete={this.deleteExpense}/>
         })
         return items;

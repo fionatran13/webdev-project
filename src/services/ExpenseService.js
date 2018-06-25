@@ -32,6 +32,7 @@ export default class ExpenseService {
     }
 
     deleteExpense(expenseId) {
+        console.log('http://localhost:8080/api/expense/' + expenseId)
         return fetch('http://localhost:8080/api/expense/' + expenseId,
             {
                 method: 'delete'

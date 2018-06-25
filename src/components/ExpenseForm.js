@@ -125,7 +125,7 @@ export default class ExpenseForm extends React.Component {
 
                 <div className="form-group">
                     <h3>Expense Date</h3>
-                    <input placeholder="mm/dd/yyyy" className="form-control"
+                    <input type="date" placeholder="mm/dd/yyyy" className="form-control"
                            onChange={this.setDate}/>
                 </div>
 
