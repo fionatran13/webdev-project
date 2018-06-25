@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login';
 import {Link} from 'react-router-dom';
 import UserService from "../services/UserService";
 import MemberSearchBar from "../components/MemberSearchBar";
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import GroupPage from "./GroupPage";
 
 
@@ -145,7 +145,7 @@ export default class LoginPage extends React.Component {
 
     render() {
         return (
-            <Router>
+            <Switch>
                 <div>
                 <div className="container-fluid">
                     {/*<Route path="/user/:userId/group/:groupId"*/}
@@ -195,7 +195,7 @@ export default class LoginPage extends React.Component {
                     </div>
                 </div>
                 </div>
-            </Router>
+            </Switch>
         )
     }
 }
