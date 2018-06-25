@@ -68,7 +68,7 @@ export default class MembersList extends React.Component {
 
         this.groupService
             .updateMembers(this.state.groupId, this.state.members)
-            .then(() => {
+            .then((response) => {
                 this.findAllMembersForGroup(this.state.groupId)
             });
     }

@@ -39,6 +39,7 @@ export default class GroupList extends React.Component {
                 function (item) {
                     return <GroupRow key={item.id + item.name}
                                      info={item}
+                                     userId={self.state.userId}
                                      delete={self.deleteGroup}
                                      userRole={self.state.userRole}
                                      selected={false}/>

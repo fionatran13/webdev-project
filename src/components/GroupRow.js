@@ -5,25 +5,36 @@ export default class GroupRow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id:'1',
+            id:'',
+            userId: '',
             userRole: ''
         }
     }
 
     setParam(props) {
+        console.log(props)
         var param = props.info
-        this.setState({id: param.id, userRole: props.userRole})
+        this.setState({id: param.id, userRole: props.userRole, userId: props.userId})
     }
 
     componentDidMount() {
         this.setParam(this.props)
     }
 
+    routeToGroupPage() {
+        if(this.props.userRole == 'admin') {
+            return `/user/${this.props.userId}/group/${this.props.info.id}`
+        }
+        else {
+            return `/user/0/group/${this.props.info.id}`
+        }
+    }
+
     render() {
         return (
             <tr>
                 <td>
-                    <Link to={`/user/1/group/${this.props.info.id}`}>
+                    <Link to={this.routeToGroupPage()}>
                         {this.props.info.name}
                     </Link>
                 </td>

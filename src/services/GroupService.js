@@ -73,14 +73,14 @@ export default class GroupService {
     }
 
     updateMembers(groupId, members) {
-        console.log(members)
         return fetch(GROUP_API_URL + '/' + groupId + '/members',
             {
                 body: JSON.stringify(members),
                 headers: {'Content-Type': 'application/json'},
                 method: 'PUT'
             }).then(function (response) {
-            return (response);
+                // console.log(response.json())
+            return (response.json());
         })
     }
 
