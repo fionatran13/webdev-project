@@ -77,7 +77,8 @@ export default class MembersList extends React.Component {
         let items = this.state.members.map((member) => {
             return <MembersListItem groupId={this.state.groupId}
                                     username={member.username}
-                                    delete={this.deleteMember}/>
+                                    delete={this.deleteMember}
+                                    anonymous={this.state.anonymous}/>
         })
         return items;
     }
