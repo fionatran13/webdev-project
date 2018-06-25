@@ -25,6 +25,12 @@ export default class GroupPage extends React.Component {
         }
     }
 
+    renderDues() {
+        if(this.state.groupId != '') {
+            return(<PaymentDueList groupId={this.state.groupId}/>)
+        }
+    }
+
     getDue() {
     }
 
@@ -43,7 +49,7 @@ export default class GroupPage extends React.Component {
                     <div className="col-4">
                         <button type="button" className="btn btn-warning"
                                 onClick={() => this.getDue()}>GET PAYMENT DUE</button>
-                        <PaymentDueList/>
+                        {this.renderDues()}
                     </div>
                 </div>
             </div>

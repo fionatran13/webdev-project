@@ -17,6 +17,7 @@ export default class PaymentDueList extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         this.setGroupId(this.props.groupId);
         this.findAllPaymentsForGroup(this.props.groupId);
     }
@@ -33,6 +34,7 @@ export default class PaymentDueList extends React.Component {
         this.paymentService
             .getAllDueByGroup(groupId)
             .then((payments) => {
+                console.log(payments)
                 this.setPayments(payments)
             })
     }
@@ -46,13 +48,16 @@ export default class PaymentDueList extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="table-responsive">
                 <h2>Payments Due</h2>
-                <table className="list-group">
+                <table className="table-bordered">
                     <thead>
-                        <tr>From</tr>
-                        <tr>To</tr>
-                        <tr>Amount Due</tr>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Amount Due</th>
+                    </tr>
+
                     </thead>
                     <tbody>
                     {this.renderPayments()}
