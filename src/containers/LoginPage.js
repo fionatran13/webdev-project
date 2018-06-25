@@ -55,7 +55,7 @@ export default class LoginPage extends React.Component {
             //console.log(this.service.findAdminById(this.state.user.id));
             var admin = this.service.findAdminById(this.state.user.id);
             if(admin !== null) {
-                window.location.href = '/user/' + this.state.user.id + '/profile'
+                window.location.href = '/user/' + this.state.user.id + '/profile/edit'
             } else {
                 window.location.href = '/admin'
             }
