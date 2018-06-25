@@ -13,14 +13,14 @@ export default class ExpenseService {
     }
 
     findAllExpensesForGroup(groupId) {
-        return fetch('http:localhost:8080/api/group/' + groupId + '/expense')
+        return fetch('http://localhost:8080/api/group/' + groupId + '/expense')
             .then(function (response) {
                 return response.json();
             })
     }
 
     addExpenseToGroup(groupId, userId, expense) {
-        return fetch('http:localhost:8080/api/user/' + userId + '/group/' + groupId + '/expense',
+        return fetch('http://localhost:8080/api/user/' + userId + '/group/' + groupId + '/expense',
             {
                 body: JSON.stringify(expense),
                 headers: {'Content-Type': 'application/json'},
@@ -32,7 +32,7 @@ export default class ExpenseService {
     }
 
     deleteExpense(expenseId) {
-        return fetch('http:localhost:8080/api/expense/' + expenseId,
+        return fetch('http://localhost:8080/api/expense/' + expenseId,
             {
                 method: 'delete'
             })

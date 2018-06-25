@@ -8,12 +8,13 @@ export default class ExpenseForm extends React.Component {
         this.state = {
             // userId: 0,
             groupId: 0,
-            amount: 0,
+            amount: '',
             expenseType: 'Other',
             note: '',
             due: '',
-            expenser: {}
+            expenser: ''
         }
+
         this.service = ExpenseService.instance;
         // this.setUserId = this.setUserId.bind(this);
         this.setGroupId = this.setGroupId.bind(this);
@@ -21,6 +22,7 @@ export default class ExpenseForm extends React.Component {
         this.setNote = this.setNote.bind(this);
         this.setDate = this.setDate.bind(this);
         this.setType = this.setType.bind(this);
+        this.setExpenser = this.setExpenser.bind(this);
 
     }
 
@@ -61,10 +63,31 @@ export default class ExpenseForm extends React.Component {
         })
     }
 
+    setExpenser(event) {
+        this.setState({
+            expenser: event.target.value
+        })
+    }
+
     createExpense() {
-        var expense = {ammount: this.state.amount, expenseType: this.state.expenseType, note: this.state.note,
-            expenseDate: this.state.due}
-        this.service.addExpenseToGroup(this.state.groupId, this.state.userId, expense)
+        var expense =
+            {
+                ammount: this.state.amount,
+                expenseType: this.state.expenseType,
+                note: this.state.note,
+                expenseDate: this.state.due
+            }
+        if (expense.ammount != ''
+            && expense.expenseType != ''
+            && this.state.expenser != '') {
+            this.service
+                .addExpenseToGroup(this.state.groupId, this.state.expenser, expense)
+                .then(alert('added'))
+        } else {
+            console.log(expense)
+            alert('missing information for expense')
+        }
+
     }
 
     render() {
@@ -74,18 +97,13 @@ export default class ExpenseForm extends React.Component {
                 <div className="form-group">
                     <h3>Amount</h3>
                     <input placeholder="20" className="form-control"
-                        onChange={this.setAmount}/>
+                           onChange={this.setAmount}/>
                 </div>
 
                 <div className="form-group">
                     <h3>Expenser</h3>
-                    <input className="form-control" placeholder="user Id"/>
-                    <button id="addBtn"
-                            type="button"
-                            className="btn"
-                            onClick={this.setExpenser}>
-                        <i className="fa fa-plus"></i>
-                    </button>
+                    <input placeholder="20" className="form-control"
+                           onChange={this.setExpenser}/>
                     {/*<MemberSearchBar/>*/}
                 </div>
 
@@ -102,13 +120,13 @@ export default class ExpenseForm extends React.Component {
                 <div className="form-group">
                     <h3>Note</h3>
                     <input placeholder="Title or Description" className="form-control"
-                        onChange={this.setNote}/>
+                           onChange={this.setNote}/>
                 </div>
 
                 <div className="form-group">
                     <h3>Expense Date</h3>
                     <input placeholder="mm/dd/yyyy" className="form-control"
-                        onChange={this.setDate}/>
+                           onChange={this.setDate}/>
                 </div>
 
                 <div className="form-group">
