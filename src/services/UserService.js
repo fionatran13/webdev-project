@@ -30,6 +30,13 @@ export default class UserService {
             });
     }
 
+    findAllAdmins() {
+        return fetch(ADMIN_API)
+            .then(function (response) {
+                return response.json();
+            });
+    }
+
     findUserByID(id) {
         return fetch(UID_URL.replace('UID', id))
             .then(function (response) {
@@ -48,6 +55,13 @@ export default class UserService {
         }).then(function(response) {
             return response.json();
         });
+    }
+
+    findAdminById(id) {
+        return fetch(ADMIN_API + '/' + id)
+            .then(function(response) {
+                return response.json();
+            })
     }
 
     createUser(user, fbId) {
@@ -78,6 +92,18 @@ export default class UserService {
 
     login(user) {
         return fetch(LOGIN_URL, {
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(function (response) {
+            return response.json();
+        })
+    }
+
+    loginAdmin(user) {
+        return fetch(ADMIN_API + '/login', {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
