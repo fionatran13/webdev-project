@@ -47,6 +47,15 @@ export default class MemberSearchBar extends React.Component {
             alert('adding ' + this.state.selectedMId + ' to group ' + this.state.gid)
             this.groupService
                 .addMemberByIdToGroup(this.state.gid, this.state.selectedMId)
+                .then(response => this.handleAdd(response))
+        }
+    }
+
+    handleAdd(response) {
+        if(response.status == 200) {
+            alert('Refresh group page to see updates')
+        } else {
+            alert('Cannot add')
         }
     }
 

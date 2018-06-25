@@ -91,7 +91,7 @@ export default class GroupService {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST'
             }).then(function (response) {
-            console.log(response);
+            return response.json();
         })
     }
 }
