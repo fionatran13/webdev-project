@@ -84,7 +84,7 @@ export default class UserService {
     }
 
     findUserByUsername(username) {
-        return fetch(USERNAME_URL + username)
+        return fetch(USERNAME_URL + '/' + username)
             .then(function(response) {
                 return response.json();
             })

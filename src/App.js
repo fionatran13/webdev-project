@@ -117,7 +117,7 @@ export default class App extends React.Component {
                        component={AnonymousSearchPage}>
                 </Route>
 
-                <Route path=""
+                <Route exact path=""
                        component={Homepage}>
                 </Route>
 

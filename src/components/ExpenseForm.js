@@ -1,6 +1,9 @@
 import React from 'react';
 import MemberSearchBar from "./MemberSearchBar";
 import ExpenseService from "../services/ExpenseService";
+import UserService from "../services/UserService";
+import GroupService from "../services/GroupService";
+
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
@@ -12,10 +15,15 @@ export default class ExpenseForm extends React.Component {
             expenseType: 'Other',
             note: '',
             due: '',
-            expenser: ''
+            expenser: '',
+            username: '',
+            members:[],
+            member:{}
         }
 
         this.service = ExpenseService.instance;
+        this.userService = UserService.instance;
+        this.groupService = GroupService.instance;
         // this.setUserId = this.setUserId.bind(this);
         this.setGroupId = this.setGroupId.bind(this);
         this.setAmount = this.setAmount.bind(this);
@@ -23,11 +31,13 @@ export default class ExpenseForm extends React.Component {
         this.setDate = this.setDate.bind(this);
         this.setType = this.setType.bind(this);
         this.setExpenser = this.setExpenser.bind(this);
+        this.setUsername = this.setUsername.bind(this);
 
     }
 
     componentDidMount() {
         this.setGroupId(this.props.match.params.groupId);
+        this.setMembers(this.props.match.params.groupId);
         // this.setUserId(this.props.userId);
     }
 
@@ -63,12 +73,32 @@ export default class ExpenseForm extends React.Component {
         })
     }
 
-    setExpenser(event) {
+    setExpenser(expenser) {
         this.setState({
-            expenser: event.target.value
+            expenser: expenser
         })
     }
 
+    setUsername(event) {
+        this.setState({
+            username: event.target.value
+        })
+    }
+
+    setMembers(groupId) {
+        this.groupService.findAllMembersForGroup(groupId)
+            .then((members) => this.setState({members: members}))
+    }
+
+    findUserName(username) {
+        for(var i = 0; i<this.state.members.length; i++) {
+            if(this.state.members[i].username === username) {
+                // this.setState({member: this.state.members[i]})
+                return this.state.members[i].id;
+            }
+        }
+        return 0;
+    }
     createExpense() {
         var expense =
             {
@@ -77,17 +107,22 @@ export default class ExpenseForm extends React.Component {
                 note: this.state.note,
                 expenseDate: this.state.due
             }
-        if (expense.ammount != ''
-            && expense.expenseType != ''
-            && this.state.expenser != '') {
-            this.service
-                .addExpenseToGroup(this.state.groupId, this.state.expenser, expense)
-                .then(alert('added'))
-        } else {
-            console.log(expense)
-            alert('missing information for expense')
-        }
 
+            var expenserId = this.findUserName(this.state.username)
+        if(expenserId === 0) {
+            window.alert("user is not in group")
+        } else {
+            if (expense.ammount != ''
+                && expense.expenseType != ''
+                && this.state.member.id != '') {
+                this.service
+                    .addExpenseToGroup(this.state.groupId, expenserId, expense)
+                    .then(alert('added'))
+            } else {
+                console.log(expense)
+                alert('missing information for expense')
+            }
+        }
     }
 
     render() {
@@ -102,8 +137,8 @@ export default class ExpenseForm extends React.Component {
 
                 <div className="form-group">
                     <h3>Expenser</h3>
-                    <input placeholder="20" className="form-control"
-                           onChange={this.setExpenser}/>
+                    <input placeholder="Username" className="form-control"
+                           onChange={this.setUsername}/>
                     {/*<MemberSearchBar/>*/}
                 </div>
 
