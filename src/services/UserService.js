@@ -100,4 +100,11 @@ export default class UserService {
                 return response.json();
             });
     }
+
+    getAllDuesforUser(userId) {
+        return fetch('http://localhost:8080/api/user/' + userId + '/due')
+            .then(function(response) {
+                return response.json();
+            });
+    }
 }

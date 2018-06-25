@@ -1,5 +1,6 @@
 import React from 'react'
 import PaymentService from "../services/PaymentService";
+import UserService from "../services/UserService";
 import PaymentDueListItem from "../components/PaymentDueListItem";
 
 export default class PaymentDueList extends React.Component {
@@ -7,23 +8,33 @@ export default class PaymentDueList extends React.Component {
         super(props)
 
         this.state = {
+            userId: 0,
             groupId: 0,
             payments: []
         };
 
         this.paymentService = PaymentService.instance;
+        this.userService = UserService.instance;
 
         this.renderPayments = this.renderPayments.bind(this)
     }
 
     componentDidMount() {
-        console.log(this.props)
         this.setGroupId(this.props.groupId);
-        this.findAllPaymentsForGroup(this.props.groupId);
-    }
+        this.setUserId(this.props.userId);
+
+        if(this.props.groupId != 0) {
+            this.findAllPaymentsForGroup(this.props.groupId);
+        } else {
+            this.findAllPaymentsForUser(this.props.userId);
+        }    }
 
     setGroupId(groupId) {
         this.setState({groupId: groupId});
+    }
+
+    setUserId(userId) {
+        this.setState({userId: userId});
     }
 
     setPayments(payments) {
@@ -35,6 +46,14 @@ export default class PaymentDueList extends React.Component {
             .getAllDueByGroup(groupId)
             .then((payments) => {
                 console.log(payments)
+                this.setPayments(payments)
+            })
+    }
+
+    findAllPaymentsForUser(userId) {
+        this.userService
+            .getAllDuesforUser(userId)
+            .then((payments) => {
                 this.setPayments(payments)
             })
     }

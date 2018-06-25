@@ -3,6 +3,7 @@ import GroupList from "./GroupList";
 import SearchBar from "../components/SearchBar";
 import UserService from "../services/UserService";
 import ExpensesList from "../containers/ExpensesList"
+import PaymentDueList from "./PaymentDueList";
 
 export default class UserProfile extends React.Component {
     constructor(props) {
@@ -64,6 +65,13 @@ export default class UserProfile extends React.Component {
         }
     }
 
+    renderDues() {
+        if(this.state.userId !== '') {
+            return(<PaymentDueList userId={this.state.userId}
+                                 groupId={0}/>)
+        }
+    }
+
     renderGroupLists() {
         if(this.state.userId !== '') {
             return(<div>
@@ -108,6 +116,8 @@ export default class UserProfile extends React.Component {
                 {this.renderGroupLists()}
                 <br/>
                 {this.renderExpenses()}
+                <br/>
+                {this.renderDues()}
             </div>
         )
     }
