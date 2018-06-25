@@ -1,5 +1,5 @@
 import React from 'react';
-import GroupService from "../services/GroupService";
+import UserService from "../services/UserService";
 import ExpenseService from "../services/ExpenseService";
 import ExpensesListItem from "../components/ExpensesListItem";
 
@@ -7,9 +7,10 @@ import ExpensesListItem from "../components/ExpensesListItem";
 export default class ExpensesList extends React.Component {
     constructor(props) {
         super(props);
-        this.groupService = GroupService.instance;
+        this.userService = UserService.instance;
         this.expenseService = ExpenseService.instance;
         this.state = {
+            userId: 0,
             groupId: 0,
             expense: {id: 0, note: ''},
             expenses: [],
@@ -24,11 +25,20 @@ export default class ExpensesList extends React.Component {
 
     componentDidMount() {
         this.setGroupId(this.props.groupId);
-        this.findAllExpensesForGroup(this.props.groupId);
+        this.setUserId(this.props.userId);
+        if(this.props.groupId != 0) {
+            this.findAllExpensesForGroup(this.props.groupId);
+        } else {
+            this.findAllExpensesForUser(this.props.userId);
+        }
     }
 
     setGroupId(groupId) {
         this.setState({groupId: groupId});
+    }
+
+    setUserId(userId) {
+        this.setState({userId: userId});
     }
 
     setNote(event) {
@@ -51,6 +61,13 @@ export default class ExpensesList extends React.Component {
             })
     }
 
+    findAllExpensesForUser(userId) {
+        this.userService
+            .getAllExpensesforUser(userId)
+            .then((expenses) => {
+                this.setExpenses(expenses)
+            })
+    }
     addExpense() {
         window.location.href = '/group/' + this.state.groupId + '/expense'
     }

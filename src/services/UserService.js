@@ -93,4 +93,11 @@ export default class UserService {
             method: 'PUT'
         })
     }
+
+    getAllExpensesforUser(userId) {
+        return fetch('http://localhost:8080/api/user/' + userId + '/expenses')
+            .then(function(response) {
+                return response.json();
+            });
+    }
 }
