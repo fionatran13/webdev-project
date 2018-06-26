@@ -27,7 +27,13 @@ export default class RegisterPage extends React.Component {
 
     createUser() {
         var user = {username: this.state.username, password: this.state.password}
-        this.service.createUser(user, 0);
+        this.service.createUser(user, 0).then(response => {
+            if(response.status === 500) {
+                alert('Username taken')
+            } else {
+                window.location.href = '/user/' + response.id +'/profile/edit'
+            }
+        });
     }
 
     setUsername(event) {

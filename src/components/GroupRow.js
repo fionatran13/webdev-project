@@ -12,7 +12,6 @@ export default class GroupRow extends React.Component {
     }
 
     setParam(props) {
-        console.log(props)
         var param = props.info
         this.setState({id: param.id, userRole: props.userRole, userId: props.userId})
     }

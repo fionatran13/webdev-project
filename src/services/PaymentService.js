@@ -1,4 +1,5 @@
 import {GROUP_API_URL} from "./GroupService";
+import {LOCAL_URL, REMOTE_URL} from "./UserService";
 
 let _singleton = Symbol();
 
@@ -15,7 +16,8 @@ export default class PaymentService {
     }
 
     getAllDueByGroup(groupId) {
-        return fetch(GROUP_API_URL + '/' + groupId + '/due')
+        var url = REMOTE_URL + '/api/group/' + groupId + '/due'
+        return fetch(url)
             .then(function (response) {
                 return response.json();
             })

@@ -124,8 +124,13 @@ export default class LoginPage extends React.Component {
         var user = {username: this.state.username, password: this.state.password};
         this.service.login(user)
             .then((re) => {
+                console.log(re)
                 if(re.status !== 500) {
-                    return <Redirect to={'/user/' + this.state.user.id + '/profile'}/>
+                    if(this.state.user.id !== undefined) {
+                        window.location.href = '/user/' + this.state.user.id + '/profile/edit'
+                    } else {
+                        window.location.href = '/user/' + re.id + '/profile/edit'
+                    }
                 } else {
                     self.service.loginAdmin(user)
                         .then((res) => self.handleResponse(res))
