@@ -54,7 +54,7 @@ export default class UserProfile extends React.Component {
     updateUser() {
         var newUser = {id: this.state.userId, username: this.state.newUsername, email: this.state.newEmail, phone: this.state.newPhone}
         this.service.updateUser(this.state.userId, newUser)
-            .then(window.location.href = '/user/' + this.state.userId + '/profile')
+            .then(() => this.setUser())
     }
 
     renderSearchBar() {

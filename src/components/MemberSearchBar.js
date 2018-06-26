@@ -86,6 +86,7 @@ export default class MemberSearchBar extends React.Component {
     }
 
     renderQuery() {
+        console.log(this.state.list)
         let self = this
         if(this.state.searchInp != '' && this.state.query.length === 0) {
             return (<tr>Results not found</tr>)
@@ -96,7 +97,7 @@ export default class MemberSearchBar extends React.Component {
                 list = this.state.query.map(
                     function (item) {
                         return (
-                            <div>
+                            <div key={item.id}>
                             <tr key={item.id} onClick={() => self.selectMember(item.id)}>
                             <Link to={"/user/" + item.id + '/profile/anonymous'}>
                                 [ID: {item.id}] Username: {item.username}
