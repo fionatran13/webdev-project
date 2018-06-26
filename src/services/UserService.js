@@ -65,7 +65,7 @@ export default class UserService {
     }
 
     createUser(user, fbId) {
-        return fetch(USER_API + fbId, {
+        return fetch(USER_API + '/' + fbId, {
             body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'

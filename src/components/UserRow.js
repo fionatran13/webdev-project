@@ -38,7 +38,7 @@ export default class UserRow extends React.Component {
                 </td>
                 <td>
                     <button className="editBtn btn btn-danger"
-                            onClick={() => window.location.href = '/user/' + this.props.info.id + '/profile'}>
+                            onClick={() => window.location.href = '/user/' + this.props.info.id + '/profile/edit'}>
                         <i className="fas fa-user-edit"></i>
                         Edit
                     </button>
